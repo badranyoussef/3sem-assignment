@@ -4,6 +4,8 @@ import assignment2.*;
 import assignment3.Employee;
 import assignment3.FunctionalInterfaces;
 import assignment4.Time;
+import assignment5.MethodReferences;
+import utility.Print;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -119,7 +121,7 @@ public class Main {
         // For at printe navnene for hver Employee i listen
         employeeList.stream() // Konverteres listen til en Stream
                 .map(employeeName) // Brug funktionen til at mappe hver Employee til dets navn
-                .forEach(System.out::println); // Print hvert navn
+                .forEach(System.out::println); // utility.Print hvert navn
 
         Print.aBreak();
 
@@ -210,7 +212,6 @@ public class Main {
 
         mapOfEmployees2.forEach((monthX, count) -> {
             System.out.println("month: "+monthX + " Number of employees: " + count.size());
-
         });
 
         //eller
@@ -229,12 +230,62 @@ public class Main {
 
         Print.aBreak();
 
-        //exercise x.x
+        //exercise 5.0
+        Print.text("Exercise 5.0");
+
+        int[] arrayOfInts ={2,4,6,8,10};
+        int[] doubledValue = FunctionalProgramming.map(arrayOfInts, MethodReferences::doubleTheValue);
+
+        //printing the values
+        for (int i : doubledValue) {
+            System.out.println(i);
+        }
+        Print.aBreak();
+
+        //exercise 6.1.
         Print.text("Exercise x.x");
         Print.aBreak();
 
-        //exercise x.x
+
+        //exercise 6.1.
         Print.text("Exercise x.x");
         Print.aBreak();
+
+        //exercise 6.1.
+        Print.text("Exercise x.x");
+        Print.aBreak();
+
+
+        //exercise 6.1.
+        Print.text("Exercise x.x");
+        Print.aBreak();
+
+
+        //exercise 6.1.
+        Print.text("Exercise x.x");
+        Print.aBreak();
+
+        //exercise 6.1.
+        Print.text("Exercise x.x");
+        Print.aBreak();
+
+        //exercise 6.1.
+        Print.text("Exercise x.x");
+        Print.aBreak();
+
+        //exercise 6.1.
+        Print.text("Exercise x.x");
+        Print.aBreak();
+
+        //exercise 6.1.
+        Print.text("Exercise x.x");
+        Print.aBreak();
+
+        //exercise 6.1.
+        Print.text("Exercise x.x");
+        Print.aBreak();
+
+
+
     }
 }

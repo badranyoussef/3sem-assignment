@@ -1,5 +1,6 @@
-public class Print {
+package utility;
 
+public class Print {
 
     public static void result(int r){
         System.out.println(r);
