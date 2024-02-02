@@ -50,7 +50,7 @@ class CollectorsExercise {
         Printer.aBreak();
 
         // Group transactions by currency and calculate sum for each currency
-        Map<String, Double> currencies = transactions.stream().collect(Collectors.groupingBy(Transaction::getCurrency, Collectors.averagingDouble(Transaction::getAmount)));
+        Map<String, Double> currencies = transactions.stream().collect(Collectors.groupingBy(Transaction::getCurrency, Collectors.summingDouble(Transaction::getAmount)));
 
         currencies.forEach((currency , amount) -> {
             Printer.result(currency + " amount: " + amount);
