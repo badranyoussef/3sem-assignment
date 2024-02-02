@@ -242,49 +242,6 @@ public class Main {
         }
         Print.aBreak();
 
-        //exercise 6.1.
-        Print.text("Exercise x.x");
-        Print.aBreak();
-
-
-        //exercise 6.1.
-        Print.text("Exercise x.x");
-        Print.aBreak();
-
-        //exercise 6.1.
-        Print.text("Exercise x.x");
-        Print.aBreak();
-
-
-        //exercise 6.1.
-        Print.text("Exercise x.x");
-        Print.aBreak();
-
-
-        //exercise 6.1.
-        Print.text("Exercise x.x");
-        Print.aBreak();
-
-        //exercise 6.1.
-        Print.text("Exercise x.x");
-        Print.aBreak();
-
-        //exercise 6.1.
-        Print.text("Exercise x.x");
-        Print.aBreak();
-
-        //exercise 6.1.
-        Print.text("Exercise x.x");
-        Print.aBreak();
-
-        //exercise 6.1.
-        Print.text("Exercise x.x");
-        Print.aBreak();
-
-        //exercise 6.1.
-        Print.text("Exercise x.x");
-        Print.aBreak();
-
 
 
     }

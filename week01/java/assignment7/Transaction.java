@@ -40,10 +40,13 @@ class CollectorsExercise {
         );
 
         // Calculate the total sum of all transaction amounts
-        double totalSum = transactions.stream()
-                .mapToDouble(Transaction::getAmount)
-                .sum();
+        double totalSum = transactions.stream().mapToDouble(Transaction::getAmount).sum();
         System.out.println("Total sum of all transactions: " + totalSum);
+
+        //min version hvis man skal benytte collectors
+        double totsum = transactions.stream().collect(Collectors.summingDouble(Transaction::getAmount));
+        Printer.result("Same result now with collector: " + totsum);
+
         Printer.aBreak();
 
         // Group transactions by currency and calculate sum for each currency
