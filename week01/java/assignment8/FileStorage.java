@@ -48,9 +48,6 @@ public class FileStorage <T> implements DataStorage <T>{
             System.out.println("Filen findes ikke");
 
         }
-        finally{
-            System.out.println("\t\tFinally method: will always run"); // prøver blot \t og \n, t = tab n = new line
-        }
 
         return (T) content;
     }
