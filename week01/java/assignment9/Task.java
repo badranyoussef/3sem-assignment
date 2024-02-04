@@ -8,7 +8,9 @@ class Task {
     void run() {
         // Simulate some computation
         try {
+            System.out.println("countung startet");
             Thread.sleep(1000); // Simulate 1 second of work
+            System.out.println("counting done");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -18,6 +20,7 @@ class Task {
 class ConcurrencyExercise {
     public static void main(String[] args) {
         // Using CompletableFuture
+        System.out.println("The program just startet");
         CompletableFuture<Void> future1 = CompletableFuture.runAsync(() -> new Task().run());
         CompletableFuture<Void> future2 = CompletableFuture.runAsync(() -> new Task().run());
 
