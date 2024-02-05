@@ -4,7 +4,6 @@ import com.google.gson.*;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
 import java.io.IOException;
 
 public class APIExercise {
@@ -41,12 +40,12 @@ public class APIExercise {
     }
 
     public MovieDTO getMovie(String movieId, String key) {
-        String url = "https://api.themoviedb.org/3/movie/id?api_key={api_key}"
+        String url = "https://api.themoviedb.org/3/movie/id?api_key={API}"
                 .replace("id", movieId)
-                .replace("{api_key}", key);
+                .replace("{API}", key);
 
         String res = getResponseBody(url);
-        System.out.println("JSON Structure: " + res);
+        //System.out.println("JSON Structure: " + res);
         MovieDTO movieDTOS = gson.fromJson(res, MovieDTO.class);
         System.out.println(movieDTOS);
         return movieDTOS;

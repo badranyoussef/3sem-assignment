@@ -43,7 +43,22 @@ public class MovieDTO {
         return overview;
     }
 
+    @Override
+    public String toString() {
+        return "MovieDTO{" +
+                "adult=" + adult +
+                ", id=" + id +
+                ", title='" + title + '\'' +
+                ", original_language='" + original_language + '\'' +
+                ", original_title='" + original_title + '\'' +
+                ", overview='" + overview + '\'' +
+                ", media_type='" + media_type + '\'' +
+                '}';
+    }
+
     public String getMedia_type() {
         return media_type;
     }
+
+
 }
