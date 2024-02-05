@@ -20,6 +20,7 @@ public class JasonExercise {
             System.out.println(c.firstName + " " + c.lastName);
         }
 
+        System.out.println(System.lineSeparator());
 
         CustomerDTO[] arr2 = getCustomersDTO();
 
@@ -27,15 +28,22 @@ public class JasonExercise {
             System.out.println(c.getFullName());
         }
 
+        System.out.println(System.lineSeparator());
+
+        CustomerDTO[] arrDTO = arryCustomerToArryDTO(arr);
+
+        for (CustomerDTO c:arrDTO) {
+            System.out.println(c);
+        }
 
     }
 
     class Customer {
-        String firstName;
-        String lastName;
-        String birthDate;
-        Address address;
-        Account account;
+        private String firstName;
+        private String lastName;
+        private String birthDate;
+        private Address address;
+        private Account account;
 
         public Account getAccount() {
             return account;
@@ -59,9 +67,9 @@ public class JasonExercise {
     }
 
     class Address {
-        String street;
-        String city;
-        int zipCode;
+        private String street;
+        private String city;
+        private int zipCode;
 
         public String getCity() {
             return city;
@@ -77,9 +85,9 @@ public class JasonExercise {
     }
 
     class Account {
-        String id;
-        String balance;
-        boolean isActive;
+        private String id;
+        private String balance;
+        private boolean isActive;
 
         public String getId() {
             return id;
@@ -95,12 +103,16 @@ public class JasonExercise {
     }
 
     static class CustomerDTO {
-        String fullName;
-        String city;
-        int zipCode;
-        boolean isActive;
+        private String fullName;
+        private String city;
+        private int zipCode;
+        private boolean isActive;
 
         public CustomerDTO(String fullName, String city, int zipCode, boolean isActive) {
+            this.fullName = fullName;
+            this.city = city;
+            this.zipCode = zipCode;
+            this.isActive = isActive;
         }
 
         public String getFullName() {
@@ -118,6 +130,16 @@ public class JasonExercise {
         public boolean getIsActive() {
             return isActive;
         }
+
+        @Override
+        public String toString() {
+            return "CustomerDTO (" +
+                    "Full Name = " + fullName +
+                    ", City = " + city +
+                    ", zipCode = " + zipCode +
+                    ", Active Account = " + (isActive ? "Yes" : "No") +
+                    ')';
+        }
     }
 
     public static Customer[] getCustomers() {
@@ -131,6 +153,15 @@ public class JasonExercise {
         return arr;
     }
 
+
+    public static CustomerDTO convertCustomerToDTO(Customer c){
+        String fullName = c.getFirstName() + " " + c.getLastName();
+        CustomerDTO dto = new CustomerDTO(fullName, c.getAdress().getCity(), c.getAdress().zipCode, c.getAccount().getActive());
+
+        return dto;
+    }
+
+
     public static CustomerDTO[] getCustomersDTO() {
         CustomerDTO[] arr = null;
         List<CustomerDTO> listDTO = new ArrayList<>();
@@ -139,18 +170,27 @@ public class JasonExercise {
             Customer[] customer = gson.fromJson(reader, Customer[].class);
 
             for (Customer c : customer) {
-                String fullName = c.getFirstName() + " " + c.getLastName();
-                String city = c.getAdress().getCity();
-                int zipCode = c.getAdress().zipCode;
-                boolean isAtive = c.getAccount().isActive;
-                CustomerDTO dto = new CustomerDTO(fullName, city, zipCode, isAtive);
+                CustomerDTO dto = convertCustomerToDTO(c);
                 listDTO.add(dto);
             }
         } catch (
                 Exception e) {
             throw new RuntimeException(e);
         }
-        return arr = listDTO.toArray(CustomerDTO[]::new);
+        return arr = listDTO.toArray(CustomerDTO[]::new); // <- Class reference
+    }
+
+
+    public static CustomerDTO[] arryCustomerToArryDTO(Customer[] arrayCustomer){
+        CustomerDTO[] arrayOfDTO = new CustomerDTO[arrayCustomer.length];
+        String fullname = null;
+
+        for (int i = 0; i < arrayCustomer.length; i++) {
+            Customer c = arrayCustomer[i];
+            fullname = c.getFirstName() + " " + c.getLastName();
+            arrayOfDTO[i] = new CustomerDTO(fullname, c.getAdress().city, c.getAdress().getZipCode(), c.getAccount().getActive());
+        }
+        return arrayOfDTO;
     }
 
 }
