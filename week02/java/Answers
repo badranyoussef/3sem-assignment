@@ -1,0 +1,27 @@
+What does JSON stand for?
+JavaScript Object Notation
+
+What is the difference between JSON and XML?
+XML has to be parsed with an XML parser. JSON can be parsed by a standard JavaScript function.
+JSON doesn't use end tag
+JSON is shorter
+JSON is quicker to read and write
+JSON can use arrays
+
+
+For what is JSON generally used for?
+JSON is a text format for storing and transporting data
+
+Write down the 6 data types in JSON.
+- number
+- String
+- Array
+- object (JSON object
+- boolean
+- null
+
+Write down the 4 JSON syntax rules.
+Data is in name/value pairs
+Data is separated by commas
+Curly braces hold objects
+Square brackets hold arrays

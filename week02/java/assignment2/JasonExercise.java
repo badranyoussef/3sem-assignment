@@ -1,4 +1,4 @@
-package assignment1;
+package assignment2;
 
 
 import com.google.gson.Gson;

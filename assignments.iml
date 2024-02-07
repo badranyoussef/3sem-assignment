@@ -2,9 +2,10 @@
 <module version="4">
   <component name="AdditionalModuleElements">
     <content url="file://$MODULE_DIR$" dumb="true">
-      <sourceFolder url="file://$MODULE_DIR$/extraExercises" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/extraExercises/Jason" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/week01/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/week02/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/week02/test" isTestSource="true" />
     </content>
   </component>
   <component name="CheckStyle-IDEA-Module" serialisationVersion="2">
