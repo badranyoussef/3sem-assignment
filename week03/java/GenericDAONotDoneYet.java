@@ -18,6 +18,8 @@ public class GenericDAONotDoneYet {
         em.close();
     }
 
+
+    //Alle metoder for neden er ikke rettet til....
     //UPDATE
     private static <T> void update (EntityManager em, T t){
         em.getTransaction().begin();
