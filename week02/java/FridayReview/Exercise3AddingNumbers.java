@@ -22,13 +22,13 @@ public class Exercise3AddingNumbers {
     public static void main(String[] args) {
 
                 //ORIGINAL Choice
-        //ExecutorService workingJack = Executors.newFixedThreadPool(17);
+        ExecutorService workingJack = Executors.newFixedThreadPool(17);
 
                 //To solve the issue i would rather fix the number of threads to one
         //ExecutorService workingJack = Executors.newFixedThreadPool(1);
 
                 //or use the CachedThreadPool method
-        ExecutorService workingJack = Executors.newCachedThreadPool();
+        //ExecutorService workingJack = Executors.newCachedThreadPool();
 
                 //Or using syncronized on the addCount method
 
@@ -38,8 +38,9 @@ public class Exercise3AddingNumbers {
         for (int count = 0; count < 1000; count++) {
             workingJack.submit(new TaskToAddCount(integerList, count));
         }
-        workingJack.shutdown();
         System.out.println("Main is done");
+        workingJack.shutdown();
+
 
     }
 

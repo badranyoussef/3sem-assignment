@@ -6,9 +6,18 @@
       <sourceFolder url="file://$MODULE_DIR$/week01/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/week02/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/week02/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/week03/java" isTestSource="false" />
     </content>
   </component>
-  <component name="CheckStyle-IDEA-Module" serialisationVersion="2">
-    <option name="activeLocationsIds" />
+  <component name="FacetManager">
+    <facet type="jpa" name="JPA">
+      <configuration>
+        <setting name="validation-enabled" value="true" />
+        <datasource-mapping>
+          <factory-entry name="assignments" />
+        </datasource-mapping>
+        <naming-strategy-map />
+      </configuration>
+    </facet>
   </component>
 </module>
