@@ -1,7 +1,5 @@
 package assignment3;
 
-import assignment1.Address;
-import assignment1.Person;
 import jakarta.persistence.EntityManagerFactory;
 import lombok.NoArgsConstructor;
 import org.hibernate.SessionFactory;

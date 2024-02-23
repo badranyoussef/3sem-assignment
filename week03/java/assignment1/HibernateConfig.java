@@ -1,5 +1,6 @@
 package assignment1;
 
+import assignment01.Person;
 import jakarta.persistence.EntityManagerFactory;
 import lombok.NoArgsConstructor;
 import org.hibernate.SessionFactory;
@@ -60,6 +61,7 @@ public class HibernateConfig {
         configuration.addAnnotatedClass(Address.class);
     }
 
+    //Singleton princippet
     public static EntityManagerFactory getEntityManagerFactoryConfig() {
         if (entityManagerFactory == null) entityManagerFactory = buildEntityFactoryConfig();
         return entityManagerFactory;

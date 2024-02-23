@@ -2,19 +2,28 @@
 <module version="4">
   <component name="AdditionalModuleElements">
     <content url="file://$MODULE_DIR$" dumb="true">
+      <sourceFolder url="file://$MODULE_DIR$/extraExercises/JAVA" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/extraExercises/JPARelations" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/week01/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/week02/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/week02/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/week03/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/extraExercises/JAVA" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/week04/Java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/week04/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/week05/Java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/week06/Java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/week07/Java" isTestSource="false" />
     </content>
+  </component>
+  <component name="CheckStyle-IDEA-Module" serialisationVersion="2">
+    <option name="activeLocationsIds" />
   </component>
   <component name="FacetManager">
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
-          <factory-entry name="assignments" />
+          <factory-entry name="assignments" value="0804f633-fbeb-4e77-b93c-1de5d6dc2bbf" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>

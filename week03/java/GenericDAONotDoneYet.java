@@ -1,48 +1,61 @@
+
+import assignment1.HibernateConfig;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 
-public class GenericDAONotDoneYet {
-
+public class GenericDAONotDoneYet  {
+    EntityManagerFactory emf = HibernateConfig.getEntityManagerFactoryConfig();
     //CREATE
-    public static <T> void create (EntityManager em, T t){
-        em.getTransaction().begin();
-        em.persist(t);
-        em.getTransaction().commit();
-        em.close();
+    public <T> void create (T t){
+        try(EntityManager em = emf.createEntityManager()){
+            em.getTransaction().begin();
+            em.persist(t);
+            em.getTransaction().commit();
+        }
     }
 
     //READ
-    private static <T> void read (EntityManager em, T t){
-        em.getTransaction().begin();
-        em.persist(t);
-        em.getTransaction().commit();
-        em.close();
+    public <T> T read (Class<T> tClass, int id){
+        try(EntityManager em = emf.createEntityManager()){
+            //Entity is managed after being retrieved
+            T entity = em.find(tClass, id);
+            // entity is detached after the entitry is returned
+            return entity;
+        }
     }
 
 
-    //Alle metoder for neden er ikke rettet til....
     //UPDATE
-    private static <T> void update (EntityManager em, T t){
-        em.getTransaction().begin();
-        em.persist(t);
-        em.getTransaction().commit();
-        em.close();
+    public <T> T update (T t){
+        try (var em = emf.createEntityManager()) {
+            em.getTransaction().begin();
+            //The entity is managed after the merge
+            T entity = em.merge(t);
+            // entity is in stransient state (after being retrieved)
+            em.getTransaction().commit();
+            //entitry is detached after it is returned
+            return entity;
+        }
     }
+
 
     //DELETE
-    private static <T> void delete (EntityManager em, T t){
-        em.getTransaction().begin();
-        em.persist(t);
-        em.getTransaction().commit();
-        em.close();
+    public <T> void delete (Class<T> tClass, int id){
+        try (var em = emf.createEntityManager()) {
+            em.getTransaction().begin();
+            // the entity is managed after it is found/retrieved
+            T entity = read(tClass, id);
+            if (entity != null) {
+                em.remove(entity);
+                System.out.println("The entity has been deleted");
+            } else {
+                System.out.println("The entity you are looking for does not exist");
+            }
+            em.getTransaction().commit();
+        }
     }
 
     //GET-ALL
-    private static <T> void getAll (EntityManager em, T t){
-        em.getTransaction().begin();
-        em.persist(t);
-        em.getTransaction().commit();
-        em.close();
+    private <T> void getAll (EntityManager em, T t){
     }
-
-
 }
