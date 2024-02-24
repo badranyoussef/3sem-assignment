@@ -36,8 +36,9 @@ public class Package {
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUpdated;
+    private Date lastUpdated = new Date();
 
     @OneToMany(mappedBy = "aPackage", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Shipment> shipments = new HashSet<>();
@@ -45,6 +46,7 @@ public class Package {
     @PrePersist
     private void updateDeliveryStatus() {
         setStatus(DeliveryStatus.PENDING);
+        lastUpdated.getTime();
     }
 
     @PreUpdate

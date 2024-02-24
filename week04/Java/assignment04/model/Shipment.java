@@ -26,6 +26,13 @@ public class Shipment {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Location destinationLocation;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date shipmentDateTime;
+    private Date shipmentDateTime = new Date();
+
+    @PrePersist
+    public void updateShipmentTime(){
+        shipmentDateTime.getTime();
+    }
+
 }
