@@ -1,9 +1,9 @@
+package assignment04;
 
-import assignment04.HibernateConfig;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 
-public class GenericDAONotDoneYet  {
+public class GenericDAONotDoneYet {
     EntityManagerFactory emf = HibernateConfig.getEntityManagerFactoryConfig();
     //CREATE
     public <T> void create (T t){

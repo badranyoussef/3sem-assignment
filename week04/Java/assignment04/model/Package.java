@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,30 +18,60 @@ import java.util.Set;
 @Setter
 @ToString
 public class Package {
-
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
-    @Column(name = "tracking_nr", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String trackingNumber;
-    @Column(name = "sender_name", nullable = false)
     private String senderName;
-    @Column(name = "receiver_name", nullable = false)
     private String receiverName;
 
-    @OneToMany
-    Set<Location> loactions = new HashSet<>();
-    @OneToMany
-    Set<Shipment> shipments = new HashSet<>();
-
-
-    @Enumerated(EnumType.STRING) // Du kan bruge EnumType.STRING direkte her
-    @Column(name = "delivery_status", nullable = false)
-    private DeliveryStatus deliveryStatus;
-    public enum DeliveryStatus{
-        PENDING,
-        IN_TRANSIT,
-        DELIVERED
+    public Package(String trackingNumber, String senderName, String receiverName) {
+        this.trackingNumber = trackingNumber;
+        this.senderName = senderName;
+        this.receiverName = receiverName;
+        this.status = status;
     }
+
+    @Enumerated(EnumType.STRING)
+    private DeliveryStatus status;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastUpdated;
+
+    @OneToMany(mappedBy = "aPackage", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Shipment> shipments = new HashSet<>();
+
+    @PrePersist
+    private void updateDeliveryStatus() {
+        setStatus(DeliveryStatus.PENDING);
+    }
+
+    @PreUpdate
+    private void updateTimestamp() {
+        lastUpdated = new Date();
+    }
+
+    public void addShipment(Shipment shipment, Location destination, Location sourceDestination) {
+        if (shipment != null) {
+            shipments.add(shipment);
+            shipment.setAPackage(this);
+            shipment.setSourceLocation(sourceDestination);
+            shipment.setDestinationLocation(destination);
+        }
+
+    }
+
+    public void removeShipment(Shipment shipment) {
+        if (shipment != null) {
+            shipments.remove(shipment);
+            shipment.setAPackage(null);
+            shipment.setSourceLocation(null);
+            shipment.setDestinationLocation(null);
+        }
+    }
+}
+
+enum DeliveryStatus {
+    PENDING, IN_TRANSIT, DELIVERED
 }

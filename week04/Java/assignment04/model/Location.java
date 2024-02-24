@@ -16,16 +16,16 @@ import java.util.Set;
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private int id;
-    private double Latitude;
-    private double Longitude;
-    private String Address;
+    private Long id;
 
-    @ManyToOne
-    Package Package;
+    private double latitude;
+    private double longitude;
+    private String address;
 
-    @ManyToMany
-    Set<Shipment> shipments = new HashSet<>();
+    public Location(double latitude, double longitude, String address){
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.address = address;
+    }
 
 }

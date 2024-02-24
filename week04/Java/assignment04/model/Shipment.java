@@ -15,15 +15,17 @@ import java.util.Date;
 public class Shipment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
-    @ManyToOne
-    Package Package;
-    @ManyToOne
-    Location sourceLocation;
-    @ManyToOne
-    Location destinationLocation;
+    private Long id;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Package aPackage;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Location sourceLocation;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Location destinationLocation;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date shipmentDateTime;
-
 }
