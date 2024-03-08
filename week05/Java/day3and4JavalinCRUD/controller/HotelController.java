@@ -2,18 +2,30 @@ package day3and4JavalinCRUD.controller;
 
 import day3and4JavalinCRUD.dao.HotelDAO;
 import day3and4JavalinCRUD.dto.HotelDto;
+import day3and4JavalinCRUD.dto.RoomDto;
 import day3and4JavalinCRUD.ressources.Hotel;
+import day3and4JavalinCRUD.ressources.Room;
 import io.javalin.http.Handler;
+import jakarta.transaction.Transactional;
+
+import java.util.List;
 
 
 public class HotelController {
 
+    @Transactional
     public static Handler getAll(HotelDAO dao) {
         return ctx -> {
             if (dao.getAll().isEmpty()) {
                 ctx.status(404).result("No Hotels available");
             } else {
-                ctx.json(dao.getAll());
+                List<HotelDto> list = dao.getAll().stream().map(hotel -> HotelDto.builder()
+                        .id(hotel.getId())
+                        .name(hotel.getName())
+                        .address(hotel.getAddress())
+                        .rooms(hotel.getRooms().size())
+                        .build()).toList();
+                ctx.json(list);
             }
         };
     }
@@ -78,4 +90,26 @@ public class HotelController {
     }
 
 
+    public static Handler getHotelRooms(HotelDAO hDAO) {
+        return ctx -> {
+          int id = Integer.parseInt(ctx.pathParam("id"));
+            Hotel hotel = hDAO.getById(id);
+            if (hotel != null) {
+                List<Room> rooms = hotel.getRooms(); // Antager at Hotel klassen har en metode getRooms()
+                if (rooms.isEmpty()) {
+                    ctx.status(404).result("No rooms available for this hotel");
+                } else {
+                    List<RoomDto> roomDtos = rooms.stream().map(room -> RoomDto.builder()
+                            .id(room.getId())
+                            .number(room.getNumber())
+                            .price(room.getPrice())
+                            .hotelId(room.getHotel().getId())
+                            .build()).toList();
+                    ctx.json(roomDtos);
+                }
+            } else {
+                ctx.status(404).result("Hotel not found");
+            }
+        };
+    }
 }

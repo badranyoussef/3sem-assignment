@@ -1,47 +1,53 @@
 package day3and4JavalinCRUD;
 
+import day3and4JavalinCRUD.classesNotUsed.HotelDAONotCorrectextend;
+import day3and4JavalinCRUD.classesNotUsed.RoomDAONotCorrectextend;
+import day3and4JavalinCRUD.config.HibernateConfig;
 import day3and4JavalinCRUD.controller.HotelController;
 import day3and4JavalinCRUD.controller.RoomController;
 import day3and4JavalinCRUD.dao.HotelDAO;
 import day3and4JavalinCRUD.dao.RoomDAO;
 import io.javalin.Javalin;
+import jakarta.persistence.EntityManagerFactory;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        //EntityManagerFactory emf = HibernateConfig.getEntityManagerFactoryConfig(false);
-        HotelDAO hotelDAO = new HotelDAO();
-        RoomDAO roomDAO = new RoomDAO();
+        EntityManagerFactory emf = HibernateConfig.getEntityManagerFactoryConfig(false);
 
+        HotelDAO hDAO = new HotelDAO(emf);
+        RoomDAO rDAO = new RoomDAO(emf);
 
         Javalin app = Javalin.create().start(7007);
 
-        //Routes: hvordan applicationen skal reagere på forskellige
-
-        app.get("hotels/{id}", HotelController.getHotel(hotelDAO));
-        app.get("hotels", HotelController.getAll(hotelDAO));
-        app.post("hotels/create", HotelController.create(hotelDAO));
-        app.delete("hotels/delete/{id}", HotelController.delete(hotelDAO));
-        app.put("hotels/update/{id}", HotelController.update(hotelDAO));
-
         //benytter metoden routes for at samle endpoints og
         //definere den samme start path for alle endpoint
-
         app.routes(
-                () -> path("api/hotels", () ->{
-                    get("/", HotelController.getAll(hotelDAO));
-                    get("{id}", HotelController.getHotel(hotelDAO));
-                    post("create", HotelController.create(hotelDAO));
-                    delete("delete/{id}", HotelController.delete(hotelDAO));
-                    put("update/{id}", HotelController.update(hotelDAO));
-                })
-        );
+                () -> {
+                    path("api/hotel", () -> {
+                        get("/", HotelController.getAll(hDAO));
+                        get("{id}", HotelController.getHotel(hDAO));
+                        get("{id}/rooms", HotelController.getHotelRooms(hDAO));
+                        post("create", HotelController.create(hDAO));
+                        delete("delete/{id}", HotelController.delete(hDAO));
+                        put("update/{id}", HotelController.update(hDAO));
+                    });
+                    path("api/room", () -> {
+                        get("/", RoomController.getAll(rDAO));
+                        get("/{id}", RoomController.getRoom(rDAO));
+                        post("/create/{hotelId}", RoomController.create(rDAO, hDAO));
+                        delete("/delete/{id}", RoomController.delete(rDAO));
+                        put("/update/{id}", RoomController.update(rDAO));
+                    });
 
+                });
 
-
-        app.get("rooms", RoomController.getAll(roomDAO));
+//
+//
+//
+//        app.get("rooms", RoomController.getAll(roomDAO));
 
 //        ApplicationConfig applicationConfig = ApplicationConfig.getInstance();
 //

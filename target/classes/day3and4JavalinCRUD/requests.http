@@ -2,11 +2,11 @@ GET http://localhost:7007/hotels
 
 ###
 
-GET http://localhost:7007/hotels/3
+GET http://localhost:7007/api/hotel/3
 
 ###
 
-POST http://localhost:7007/hotels/create
+POST http://localhost:7007/hotel/create
 
 {
 "name": "Scandic",
@@ -15,14 +15,32 @@ POST http://localhost:7007/hotels/create
 ###
 
 
-DELETE http://localhost:7007/hotels/delete/2
+DELETE http://localhost:7007/hotel/delete/2
 
 ###
 
-PUT http://localhost:7007/hotels/update/3
+PUT http://localhost:7007/hotel/update/3
 
 {
 "address": "Kongevejen",
 "name": "Comewell"
 }
+###
+
+
+GET http://localhost:7007/api/hotel
+
+###
+
+
+GET http://localhost:7007/api/room/7
+
+###
+
+POST http://localhost:7007/api/room/create/1
+
+    {
+        "number": "100",
+        "price": 50.8
+    }
 ###

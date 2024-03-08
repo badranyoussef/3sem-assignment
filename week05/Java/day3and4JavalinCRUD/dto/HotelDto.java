@@ -16,5 +16,6 @@ public class HotelDto {
     private int id;
     private String name;
     private String address;
-    //private List<Room> rooms;
+    private int rooms;
+
 }
