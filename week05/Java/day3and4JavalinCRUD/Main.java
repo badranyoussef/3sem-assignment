@@ -1,7 +1,5 @@
 package day3and4JavalinCRUD;
 
-import day3and4JavalinCRUD.classesNotUsed.HotelDAONotCorrectextend;
-import day3and4JavalinCRUD.classesNotUsed.RoomDAONotCorrectextend;
 import day3and4JavalinCRUD.config.HibernateConfig;
 import day3and4JavalinCRUD.controller.HotelController;
 import day3and4JavalinCRUD.controller.RoomController;
@@ -44,9 +42,7 @@ public class Main {
 
                 });
 
-//
-//
-//
+
 //        app.get("rooms", RoomController.getAll(roomDAO));
 
 //        ApplicationConfig applicationConfig = ApplicationConfig.getInstance();
