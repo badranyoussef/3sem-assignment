@@ -2,9 +2,8 @@
 
 ## Overview
 
-- Your name
-- which assignment are included
-- which one are completed and which one are not
+- Youssef Badran
+- All assignments are included
 
 ## Friday presentation
 - add the friday presentation into the weekly folder
