@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="DolphinDAOTest" time="2.831" tests="4" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/youssefbadran/Documents/GitHub/3sem-assignments/target/test-classes:/Users/youssefbadran/Documents/GitHub/3sem-assignments/target/classes:/Users/youssefbadran/.m2/repository/org/postgresql/postgresql/42.6.0/postgresql-42.6.0.jar:/Users/youssefbadran/.m2/repository/org/checkerframework/checker-qual/3.31.0/checker-qual-3.31.0.jar:/Users/youssefbadran/.m2/repository/org/hibernate/orm/hibernate-core/6.2.4.Final/hibernate-core-6.2.4.Final.jar:/Users/youssefbadran/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/Users/youssefbadran/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/Users/youssefbadran/.m2/repository/org/jboss/logging/jboss-logging/3.5.0.Final/jboss-logging-3.5.0.Final.jar:/Users/youssefbadran/.m2/repository/org/hibernate/common/hibernate-commons-annotations/6.0.6.Final/hibernate-commons-annotations-6.0.6.Final.jar:/Users/youssefbadran/.m2/repository/io/smallrye/jandex/3.0.5/jandex-3.0.5.jar:/Users/youssefbadran/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar:/Users/youssefbadran/.m2/repository/net/bytebuddy/byte-buddy/1.12.18/byte-buddy-1.12.18.jar:/Users/youssefbadran/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.0/jakarta.xml.bind-api-4.0.0.jar:/Users/youssefbadran/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar:/Users/youssefbadran/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.2/jaxb-runtime-4.0.2.jar:/Users/youssefbadran/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.2/jaxb-core-4.0.2.jar:/Users/youssefbadran/.m2/repository/org/eclipse/angus/angus-activation/2.0.0/angus-activation-2.0.0.jar:/Users/youssefbadran/.m2/repository/org/glassfish/jaxb/txw2/4.0.2/txw2-4.0.2.jar:/Users/youssefbadran/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.1/istack-commons-runtime-4.1.1.jar:/Users/youssefbadran/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/Users/youssefbadran/.m2/repository/org/antlr/antlr4-runtime/4.10.1/antlr4-runtime-4.10.1.jar:/Users/youssefbadran/.m2/repository/org/projectlombok/lombok/1.18.28/lombok-1.18.28.jar:/Users/youssefbadran/.m2/repository/com/squareup/okhttp3/okhttp/4.2.2/okhttp-4.2.2.jar:/Users/youssefbadran/.m2/repository/com/squareup/okio/okio/2.2.2/okio-2.2.2.jar:/Users/youssefbadran/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.3.50/kotlin-stdlib-1.3.50.jar:/Users/youssefbadran/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.3.50/kotlin-stdlib-common-1.3.50.jar:/Users/youssefbadran/.m2/repository/com/google/code/gson/gson/2.8.9/gson-2.8.9.jar:/Users/youssefbadran/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.1/junit-jupiter-api-5.9.1.jar:/Users/youssefbadran/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/youssefbadran/.m2/repository/org/junit/platform/junit-platform-commons/1.9.1/junit-platform-commons-1.9.1.jar:/Users/youssefbadran/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/youssefbadran/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.0/jackson-databind-2.15.0.jar:/Users/youssefbadran/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.0/jackson-annotations-2.15.0.jar:/Users/youssefbadran/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.0/jackson-core-2.15.0.jar:/Users/youssefbadran/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.1/junit-jupiter-engine-5.9.1.jar:/Users/youssefbadran/.m2/repository/org/junit/platform/junit-platform-engine/1.9.1/junit-platform-engine-1.9.1.jar:/Users/youssefbadran/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.1/junit-jupiter-params-5.9.1.jar:/Users/youssefbadran/.m2/repository/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar:/Users/youssefbadran/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/youssefbadran/.m2/repository/org/testcontainers/testcontainers/1.19.5/testcontainers-1.19.5.jar:/Users/youssefbadran/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/youssefbadran/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/Users/youssefbadran/.m2/repository/org/apache/commons/commons-compress/1.24.0/commons-compress-1.24.0.jar:/Users/youssefbadran/.m2/repository/org/rnorth/duct-tape/duct-tape/1.0.8/duct-tape-1.0.8.jar:/Users/youssefbadran/.m2/repository/com/github/docker-java/docker-java-api/3.3.4/docker-java-api-3.3.4.jar:/Users/youssefbadran/.m2/repository/com/github/docker-java/docker-java-transport-zerodep/3.3.4/docker-java-transport-zerodep-3.3.4.jar:/Users/youssefbadran/.m2/repository/com/github/docker-java/docker-java-transport/3.3.4/docker-java-transport-3.3.4.jar:/Users/youssefbadran/.m2/repository/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar:/Users/youssefbadran/.m2/repository/org/testcontainers/postgresql/1.19.5/postgresql-1.19.5.jar:/Users/youssefbadran/.m2/repository/org/testcontainers/jdbc/1.19.5/jdbc-1.19.5.jar:/Users/youssefbadran/.m2/repository/org/testcontainers/database-commons/1.19.5/database-commons-1.19.5.jar:/Users/youssefbadran/.m2/repository/org/testcontainers/junit-jupiter/1.19.5/junit-jupiter-1.19.5.jar:/Users/youssefbadran/.m2/repository/io/javalin/javalin/5.6.1/javalin-5.6.1.jar:/Users/youssefbadran/.m2/repository/org/jetbrains/annotations/24.0.1/annotations-24.0.1.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-server/11.0.15/jetty-server-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/toolchain/jetty-jakarta-servlet-api/5.0.2/jetty-jakarta-servlet-api-5.0.2.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-http/11.0.15/jetty-http-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-util/11.0.15/jetty-util-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-io/11.0.15/jetty-io-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-webapp/11.0.15/jetty-webapp-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-servlet/11.0.15/jetty-servlet-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-security/11.0.15/jetty-security-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-xml/11.0.15/jetty-xml-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/websocket/websocket-jetty-server/11.0.15/websocket-jetty-server-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/websocket/websocket-jetty-common/11.0.15/websocket-jetty-common-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/websocket/websocket-core-common/11.0.15/websocket-core-common-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/websocket/websocket-servlet/11.0.15/websocket-servlet-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/websocket/websocket-core-server/11.0.15/websocket-core-server-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-annotations/11.0.15/jetty-annotations-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-plus/11.0.15/jetty-plus-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-jndi/11.0.15/jetty-jndi-11.0.15.jar:/Users/youssefbadran/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/youssefbadran/.m2/repository/org/ow2/asm/asm/9.5/asm-9.5.jar:/Users/youssefbadran/.m2/repository/org/ow2/asm/asm-commons/9.5/asm-commons-9.5.jar:/Users/youssefbadran/.m2/repository/org/ow2/asm/asm-tree/9.5/asm-tree-9.5.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/websocket/websocket-jetty-api/11.0.15/websocket-jetty-api-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.8.21/kotlin-stdlib-jdk8-1.8.21.jar:/Users/youssefbadran/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.8.21/kotlin-stdlib-jdk7-1.8.21.jar:/Users/youssefbadran/.m2/repository/org/slf4j/slf4j-simple/2.0.7/slf4j-simple-2.0.7.jar:"/>
+    <property name="java.vm.vendor" value="Amazon.com Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://aws.amazon.com/corretto/"/>
+    <property name="user.timezone" value="Europe/Copenhagen"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="GB"/>
+    <property name="sun.boot.library.path" value="/Users/youssefbadran/Library/Java/JavaVirtualMachines/corretto-17.0.10/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/youssefbadran/Documents/GitHub/3sem-assignments/target/surefire/surefirebooter-20240304192059123_3.jar /Users/youssefbadran/Documents/GitHub/3sem-assignments/target/surefire 2024-03-04T19-20-59_056-jvmRun1 surefire-20240304192059123_1tmp surefire_0-20240304192059123_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/youssefbadran/Documents/GitHub/3sem-assignments/target/test-classes:/Users/youssefbadran/Documents/GitHub/3sem-assignments/target/classes:/Users/youssefbadran/.m2/repository/org/postgresql/postgresql/42.6.0/postgresql-42.6.0.jar:/Users/youssefbadran/.m2/repository/org/checkerframework/checker-qual/3.31.0/checker-qual-3.31.0.jar:/Users/youssefbadran/.m2/repository/org/hibernate/orm/hibernate-core/6.2.4.Final/hibernate-core-6.2.4.Final.jar:/Users/youssefbadran/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/Users/youssefbadran/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/Users/youssefbadran/.m2/repository/org/jboss/logging/jboss-logging/3.5.0.Final/jboss-logging-3.5.0.Final.jar:/Users/youssefbadran/.m2/repository/org/hibernate/common/hibernate-commons-annotations/6.0.6.Final/hibernate-commons-annotations-6.0.6.Final.jar:/Users/youssefbadran/.m2/repository/io/smallrye/jandex/3.0.5/jandex-3.0.5.jar:/Users/youssefbadran/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar:/Users/youssefbadran/.m2/repository/net/bytebuddy/byte-buddy/1.12.18/byte-buddy-1.12.18.jar:/Users/youssefbadran/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.0/jakarta.xml.bind-api-4.0.0.jar:/Users/youssefbadran/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar:/Users/youssefbadran/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.2/jaxb-runtime-4.0.2.jar:/Users/youssefbadran/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.2/jaxb-core-4.0.2.jar:/Users/youssefbadran/.m2/repository/org/eclipse/angus/angus-activation/2.0.0/angus-activation-2.0.0.jar:/Users/youssefbadran/.m2/repository/org/glassfish/jaxb/txw2/4.0.2/txw2-4.0.2.jar:/Users/youssefbadran/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.1/istack-commons-runtime-4.1.1.jar:/Users/youssefbadran/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/Users/youssefbadran/.m2/repository/org/antlr/antlr4-runtime/4.10.1/antlr4-runtime-4.10.1.jar:/Users/youssefbadran/.m2/repository/org/projectlombok/lombok/1.18.28/lombok-1.18.28.jar:/Users/youssefbadran/.m2/repository/com/squareup/okhttp3/okhttp/4.2.2/okhttp-4.2.2.jar:/Users/youssefbadran/.m2/repository/com/squareup/okio/okio/2.2.2/okio-2.2.2.jar:/Users/youssefbadran/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.3.50/kotlin-stdlib-1.3.50.jar:/Users/youssefbadran/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.3.50/kotlin-stdlib-common-1.3.50.jar:/Users/youssefbadran/.m2/repository/com/google/code/gson/gson/2.8.9/gson-2.8.9.jar:/Users/youssefbadran/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.1/junit-jupiter-api-5.9.1.jar:/Users/youssefbadran/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/youssefbadran/.m2/repository/org/junit/platform/junit-platform-commons/1.9.1/junit-platform-commons-1.9.1.jar:/Users/youssefbadran/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/youssefbadran/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.0/jackson-databind-2.15.0.jar:/Users/youssefbadran/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.0/jackson-annotations-2.15.0.jar:/Users/youssefbadran/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.0/jackson-core-2.15.0.jar:/Users/youssefbadran/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.1/junit-jupiter-engine-5.9.1.jar:/Users/youssefbadran/.m2/repository/org/junit/platform/junit-platform-engine/1.9.1/junit-platform-engine-1.9.1.jar:/Users/youssefbadran/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.1/junit-jupiter-params-5.9.1.jar:/Users/youssefbadran/.m2/repository/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar:/Users/youssefbadran/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/youssefbadran/.m2/repository/org/testcontainers/testcontainers/1.19.5/testcontainers-1.19.5.jar:/Users/youssefbadran/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/youssefbadran/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/Users/youssefbadran/.m2/repository/org/apache/commons/commons-compress/1.24.0/commons-compress-1.24.0.jar:/Users/youssefbadran/.m2/repository/org/rnorth/duct-tape/duct-tape/1.0.8/duct-tape-1.0.8.jar:/Users/youssefbadran/.m2/repository/com/github/docker-java/docker-java-api/3.3.4/docker-java-api-3.3.4.jar:/Users/youssefbadran/.m2/repository/com/github/docker-java/docker-java-transport-zerodep/3.3.4/docker-java-transport-zerodep-3.3.4.jar:/Users/youssefbadran/.m2/repository/com/github/docker-java/docker-java-transport/3.3.4/docker-java-transport-3.3.4.jar:/Users/youssefbadran/.m2/repository/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar:/Users/youssefbadran/.m2/repository/org/testcontainers/postgresql/1.19.5/postgresql-1.19.5.jar:/Users/youssefbadran/.m2/repository/org/testcontainers/jdbc/1.19.5/jdbc-1.19.5.jar:/Users/youssefbadran/.m2/repository/org/testcontainers/database-commons/1.19.5/database-commons-1.19.5.jar:/Users/youssefbadran/.m2/repository/org/testcontainers/junit-jupiter/1.19.5/junit-jupiter-1.19.5.jar:/Users/youssefbadran/.m2/repository/io/javalin/javalin/5.6.1/javalin-5.6.1.jar:/Users/youssefbadran/.m2/repository/org/jetbrains/annotations/24.0.1/annotations-24.0.1.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-server/11.0.15/jetty-server-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/toolchain/jetty-jakarta-servlet-api/5.0.2/jetty-jakarta-servlet-api-5.0.2.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-http/11.0.15/jetty-http-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-util/11.0.15/jetty-util-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-io/11.0.15/jetty-io-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-webapp/11.0.15/jetty-webapp-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-servlet/11.0.15/jetty-servlet-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-security/11.0.15/jetty-security-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-xml/11.0.15/jetty-xml-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/websocket/websocket-jetty-server/11.0.15/websocket-jetty-server-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/websocket/websocket-jetty-common/11.0.15/websocket-jetty-common-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/websocket/websocket-core-common/11.0.15/websocket-core-common-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/websocket/websocket-servlet/11.0.15/websocket-servlet-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/websocket/websocket-core-server/11.0.15/websocket-core-server-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-annotations/11.0.15/jetty-annotations-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-plus/11.0.15/jetty-plus-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/jetty-jndi/11.0.15/jetty-jndi-11.0.15.jar:/Users/youssefbadran/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/youssefbadran/.m2/repository/org/ow2/asm/asm/9.5/asm-9.5.jar:/Users/youssefbadran/.m2/repository/org/ow2/asm/asm-commons/9.5/asm-commons-9.5.jar:/Users/youssefbadran/.m2/repository/org/ow2/asm/asm-tree/9.5/asm-tree-9.5.jar:/Users/youssefbadran/.m2/repository/org/eclipse/jetty/websocket/websocket-jetty-api/11.0.15/websocket-jetty-api-11.0.15.jar:/Users/youssefbadran/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.8.21/kotlin-stdlib-jdk8-1.8.21.jar:/Users/youssefbadran/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.8.21/kotlin-stdlib-jdk7-1.8.21.jar:/Users/youssefbadran/.m2/repository/org/slf4j/slf4j-simple/2.0.7/slf4j-simple-2.0.7.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/youssefbadran"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-01-16"/>
+    <property name="java.home" value="/Users/youssefbadran/Library/Java/JavaVirtualMachines/corretto-17.0.10/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/youssefbadran/Documents/GitHub/3sem-assignments"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/Users/youssefbadran/Documents/GitHub/3sem-assignments/target/surefire/surefirebooter-20240304192059123_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="17.0.10+7-LTS"/>
+    <property name="user.name" value="youssefbadran"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="14.2.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Corretto-17.0.10.7.1"/>
+    <property name="localRepository" value="/Users/youssefbadran/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-17/issues/"/>
+    <property name="java.io.tmpdir" value="/var/folders/nb/fxty61xd7jsbp25hcb0fqkr00000gn/T/"/>
+    <property name="idea.version" value="2023.3.4"/>
+    <property name="java.version" value="17.0.10"/>
+    <property name="user.dir" value="/Users/youssefbadran/Documents/GitHub/3sem-assignments"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/youssefbadran/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Amazon.com Inc."/>
+    <property name="java.vm.version" value="17.0.10+7-LTS"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="create" classname="DolphinDAOTest" time="2.761">
+    <system-out><![CDATA[Hibernate Java Config serviceRegistry created
+Hibernate: alter table if exists Fee drop constraint if exists FKm4avbamv838iqlvt6nul323ak
+Hibernate: alter table if exists Note drop constraint if exists FKcqjnh85fbt2qbfvx1uch2uqv9
+Hibernate: alter table if exists PersonDetail drop constraint if exists FKagbw3rwf7u7omd3rgnuj29oeu
+Hibernate: drop table if exists Fee cascade
+Hibernate: drop table if exists Note cascade
+Hibernate: drop table if exists Person cascade
+Hibernate: drop table if exists PersonDetail cascade
+Hibernate: create table Fee (Id serial not null, amount integer not null, payDate date, person_id integer, primary key (Id))
+Hibernate: create table Note (createdOn date, id serial not null, person_id integer, createdBy varchar(255), note varchar(255), primary key (id))
+Hibernate: create table Person (age integer not null, id serial not null, name varchar(255), primary key (id))
+Hibernate: create table PersonDetail (age integer not null, person_id integer not null, zip integer not null, Address varchar(255), city varchar(255), primary key (person_id))
+Hibernate: alter table if exists Fee add constraint FKm4avbamv838iqlvt6nul323ak foreign key (person_id) references Person
+Hibernate: alter table if exists Note add constraint FKcqjnh85fbt2qbfvx1uch2uqv9 foreign key (person_id) references Person
+Hibernate: alter table if exists PersonDetail add constraint FKagbw3rwf7u7omd3rgnuj29oeu foreign key (person_id) references Person
+Hibernate: insert into Person (age,name) values (?,?)
+Hibernate: insert into Person (age,name) values (?,?)
+Hibernate: insert into Person (age,name) values (?,?)
+Hibernate: insert into Person (age,name) values (?,?)
+Hibernate: insert into Person (age,name) values (?,?)
+]]></system-out>
+    <system-err><![CDATA[Mar 04, 2024 7:20:59 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate ORM core version 6.2.4.Final
+Mar 04, 2024 7:20:59 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000406: Using bytecode reflection optimizer
+Mar 04, 2024 7:20:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+WARN: HHH10001002: Using built-in connection pool (not intended for production use)
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Mar 04, 2024 7:20:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001005: Loaded JDBC driver class: org.testcontainers.jdbc.ContainerDatabaseDriver
+Mar 04, 2024 7:20:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001012: Connecting with JDBC URL [jdbc:tc:postgresql:15.3-alpine3.18:///test-db]
+Mar 04, 2024 7:20:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001001: Connection properties: {password=****, user=postgres}
+Mar 04, 2024 7:20:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001003: Autocommit mode: false
+Mar 04, 2024 7:20:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
+INFO: HHH10001115: Connection pool size: 20 (min=1)
+SLF4J: Failed to load class "org.slf4j.impl.StaticMDCBinder".
+SLF4J: Defaulting to no-operation MDCAdapter implementation.
+SLF4J: See http://www.slf4j.org/codes.html#no_static_mdc_binder for further details.
+Mar 04, 2024 7:21:01 PM org.hibernate.bytecode.internal.BytecodeProviderInitiator buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : bytebuddy
+Mar 04, 2024 7:21:02 PM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
+INFO: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+Mar 04, 2024 7:21:02 PM org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl getIsolatedConnection
+INFO: HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@5ac646b3] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+Mar 04, 2024 7:21:02 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler logWarning
+WARN: SQL Warning Code: 0, SQLState: 00000
+Mar 04, 2024 7:21:02 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler logWarning
+WARN: relation "fee" does not exist, skipping
+Mar 04, 2024 7:21:02 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler logWarning
+WARN: SQL Warning Code: 0, SQLState: 00000
+Mar 04, 2024 7:21:02 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler logWarning
+WARN: relation "note" does not exist, skipping
+Mar 04, 2024 7:21:02 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler logWarning
+WARN: SQL Warning Code: 0, SQLState: 00000
+Mar 04, 2024 7:21:02 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler logWarning
+WARN: relation "persondetail" does not exist, skipping
+Mar 04, 2024 7:21:02 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler logWarning
+WARN: SQL Warning Code: 0, SQLState: 00000
+Mar 04, 2024 7:21:02 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler logWarning
+WARN: table "fee" does not exist, skipping
+Mar 04, 2024 7:21:02 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler logWarning
+WARN: SQL Warning Code: 0, SQLState: 00000
+Mar 04, 2024 7:21:02 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler logWarning
+WARN: table "note" does not exist, skipping
+Mar 04, 2024 7:21:02 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler logWarning
+WARN: SQL Warning Code: 0, SQLState: 00000
+Mar 04, 2024 7:21:02 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler logWarning
+WARN: table "person" does not exist, skipping
+Mar 04, 2024 7:21:02 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler logWarning
+WARN: SQL Warning Code: 0, SQLState: 00000
+Mar 04, 2024 7:21:02 PM org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler logWarning
+WARN: table "persondetail" does not exist, skipping
+Mar 04, 2024 7:21:02 PM org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl getIsolatedConnection
+INFO: HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@1397b141] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+]]></system-err>
+  </testcase>
+  <testcase name="delete" classname="DolphinDAOTest" time="0.001"/>
+  <testcase name="update" classname="DolphinDAOTest" time="0.051">
+    <system-out><![CDATA[Hibernate: select p1_0.id,p1_0.age,p1_0.name,p2_0.person_id,p2_0.Address,p2_0.age,p2_0.city,p2_0.zip from Person p1_0 left join PersonDetail p2_0 on p1_0.id=p2_0.person_id where p1_0.id=?
+Hibernate: select p1_0.id,p1_0.age,f1_0.person_id,f1_0.Id,f1_0.amount,f1_0.payDate,p1_0.name,p2_0.person_id,p2_0.Address,p2_0.age,p2_0.city,p2_0.zip from Person p1_0 left join Fee f1_0 on p1_0.id=f1_0.person_id left join PersonDetail p2_0 on p1_0.id=p2_0.person_id where p1_0.id=?
+Hibernate: select n1_0.person_id,n1_0.id,n1_0.createdBy,n1_0.createdOn,n1_0.note from Note n1_0 where n1_0.person_id=?
+Hibernate: update Person set age=?,name=? where id=?
+]]></system-out>
+  </testcase>
+  <testcase name="read" classname="DolphinDAOTest" time="0.003">
+    <system-out><![CDATA[Hibernate: select p1_0.id,p1_0.age,p1_0.name,p2_0.person_id,p2_0.Address,p2_0.age,p2_0.city,p2_0.zip from Person p1_0 left join PersonDetail p2_0 on p1_0.id=p2_0.person_id where p1_0.id=?
+]]></system-out>
+  </testcase>
+</testsuite>

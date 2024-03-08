@@ -52,14 +52,20 @@ class DriverDAOImplTest {
 
     @Test
     void saveDriver() {
+
+        //Given
         Driver foundDriver;
         dao.saveDriver("Jakob", "Larsen", new BigDecimal(52800));
+
+        //When
         try(var em = emf.createEntityManager()) {
             foundDriver = em.createQuery("SELECT d FROM Driver d WHERE d.name = :name AND d.surname = :surname", Driver.class)
                     .setParameter("name", "Jakob")
                     .setParameter("surname", "Larsen")
                     .getSingleResult();
         }
+
+        //Then
         assertEquals("Jakob",foundDriver.getName());
     }
 

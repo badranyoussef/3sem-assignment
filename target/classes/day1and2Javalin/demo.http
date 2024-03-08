@@ -1,0 +1,49 @@
+GET http://localhost:7007/api/dogs
+###
+
+POST http://localhost:7007/api/
+
+{
+"id": 4,
+"name": "kuku",
+"age": 1
+}
+###
+
+GET http://localhost:7007/api/dogs/4
+
+###
+
+PUT http://localhost:7007/api/dog/4/milo
+
+###
+
+DELETE http://localhost:7007/api/delete/dog/1
+###
+
+
+GET http://localhost:7007/api/dogs-dto
+###
+
+GET http://localhost:7007/api/dogs-dto/1
+###
+
+POST http://localhost:7007/api/create-dog
+
+{
+"id": 4,
+"name": "kuku",
+"age": 1
+}
+###
+
+PUT http://localhost:7007/api/update/dog/1
+
+{
+"name": "Pumba"
+}
+###
+
+DELETE http://localhost:7007/api/deletee/dog/1
+
+###

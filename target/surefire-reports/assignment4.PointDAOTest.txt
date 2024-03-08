@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: assignment4.PointDAOTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 1, Errors: 3, Skipped: 0, Time elapsed: 0.313 s <<< FAILURE! - in assignment4.PointDAOTest
-assignment4.PointDAOTest.getAveragePoints  Time elapsed: 0.306 s  <<< FAILURE!
+Tests run: 4, Failures: 1, Errors: 3, Skipped: 0, Time elapsed: 0.079 s <<< FAILURE! - in assignment4.PointDAOTest
+assignment4.PointDAOTest.getAveragePoints  Time elapsed: 0.076 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <1000.0> but was: <499.5>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -196,7 +196,7 @@ java.lang.IllegalStateException: EntityManagerFactory is closed
 		at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:142)
 		... 49 more
 
-assignment4.PointDAOTest.getAllPoint  Time elapsed: 0.001 s  <<< ERROR!
+assignment4.PointDAOTest.getAllPoint  Time elapsed: 0 s  <<< ERROR!
 java.lang.IllegalStateException: EntityManagerFactory is closed
 	at org.hibernate.internal.SessionFactoryImpl.validateNotClosed(SessionFactoryImpl.java:642)
 	at org.hibernate.internal.SessionFactoryImpl.createEntityManager(SessionFactoryImpl.java:700)
@@ -309,7 +309,7 @@ java.lang.IllegalStateException: EntityManagerFactory is closed
 		at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:142)
 		... 49 more
 
-assignment4.PointDAOTest.getPoint  Time elapsed: 0 s  <<< ERROR!
+assignment4.PointDAOTest.getPoint  Time elapsed: 0.001 s  <<< ERROR!
 java.lang.IllegalStateException: EntityManagerFactory is closed
 	at org.hibernate.internal.SessionFactoryImpl.validateNotClosed(SessionFactoryImpl.java:642)
 	at org.hibernate.internal.SessionFactoryImpl.createEntityManager(SessionFactoryImpl.java:700)

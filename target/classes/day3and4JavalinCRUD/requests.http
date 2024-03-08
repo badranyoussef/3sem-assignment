@@ -1,0 +1,28 @@
+GET http://localhost:7007/hotels
+
+###
+
+GET http://localhost:7007/hotels/3
+
+###
+
+POST http://localhost:7007/hotels/create
+
+{
+"name": "Scandic",
+"address": "Falkoner Allé"
+}
+###
+
+
+DELETE http://localhost:7007/hotels/delete/2
+
+###
+
+PUT http://localhost:7007/hotels/update/3
+
+{
+"address": "Kongevejen",
+"name": "Comewell"
+}
+###
