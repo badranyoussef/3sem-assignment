@@ -37,10 +37,10 @@ GET http://localhost:7007/api/room/7
 
 ###
 
-POST http://localhost:7007/api/room/create/1
+POST http://localhost:7007/api/room/create/4
 
     {
-        "number": "100",
+        "number": "415",
         "price": 50.8
     }
 ###
