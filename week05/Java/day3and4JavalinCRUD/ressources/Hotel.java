@@ -1,6 +1,7 @@
 package day3and4JavalinCRUD.ressources;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,11 +23,12 @@ public class Hotel {
     private int id;
     private String name;
     private String address;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel", fetch = FetchType.EAGER)
+    @JsonManagedReference
     List<Room> rooms = new ArrayList<>();
 
-    public Hotel(int id, String name, String address) {
-        this.id = id;
+    public Hotel(String name, String address) {
         this.name = name;
         this.address = address;
     }

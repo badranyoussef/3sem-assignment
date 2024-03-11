@@ -18,7 +18,7 @@ public class Route {
 
     public static EndpointGroup hotelEndPoints() {
         return () -> {
-            path("hotel", () -> {
+            path("hotels", () -> {
                 get("/", HotelController.getAll(hDAO));
                 get("{id}", HotelController.getHotel(hDAO));
                 get("{id}/rooms", HotelController.getHotelRooms(hDAO));
@@ -31,7 +31,7 @@ public class Route {
 
     public static EndpointGroup roomEndPoints() {
         return () -> {
-            path("room", () -> {
+            path("rooms", () -> {
                 get("/", RoomController.getAll(rDAO));
                 get("/{id}", RoomController.getRoom(rDAO));
                 post("/create/{hotelId}", RoomController.create(rDAO, hDAO));

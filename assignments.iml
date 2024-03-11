@@ -11,6 +11,7 @@
       <sourceFolder url="file://$MODULE_DIR$/week04/Java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/week04/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/week05/Java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/week05/Test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/week06/Java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/week07/Java" isTestSource="false" />
     </content>

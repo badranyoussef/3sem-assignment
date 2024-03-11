@@ -52,5 +52,7 @@ public class ApplicationConfig {
     }
 
 
-
+    public void stopServer() {
+        app.stop();
+    }
 }

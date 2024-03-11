@@ -1,5 +1,6 @@
 package day3and4JavalinCRUD.ressources;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,14 +17,16 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @ManyToOne
     @JoinColumn(name = "hotel_id")
+    @JsonBackReference
     private Hotel hotel;
+
     private int number;
     private double price;
 
-    public Room(int id, int number, double price) {
-        this.id = id;
+    public Room(int number, double price) {
         this.number = number;
         this.price = price;
     }

@@ -8,6 +8,7 @@ import day3and4JavalinCRUD.ressources.Room;
 import io.javalin.http.Handler;
 import jakarta.transaction.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -23,7 +24,7 @@ public class HotelController {
                         .id(hotel.getId())
                         .name(hotel.getName())
                         .address(hotel.getAddress())
-                        .rooms(hotel.getRooms().size())
+                        .rooms(Arrays.asList(hotel.getRooms().toArray()))
                         .build()).toList();
                 ctx.json(list);
             }
@@ -95,7 +96,7 @@ public class HotelController {
           int id = Integer.parseInt(ctx.pathParam("id"));
             Hotel hotel = hDAO.getById(id);
             if (hotel != null) {
-                List<Room> rooms = hotel.getRooms(); // Antager at Hotel klassen har en metode getRooms()
+                List<Room> rooms = hotel.getRooms();
                 if (rooms.isEmpty()) {
                     ctx.status(404).result("No rooms available for this hotel");
                 } else {

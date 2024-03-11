@@ -28,7 +28,7 @@ PUT http://localhost:7007/hotel/update/3
 ###
 
 
-GET http://localhost:7007/api/hotel
+GET http://localhost:7007/api/hotels
 
 ###
 
