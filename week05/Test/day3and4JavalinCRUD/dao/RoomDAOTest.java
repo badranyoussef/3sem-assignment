@@ -104,18 +104,18 @@ class RoomDAOTest {
 
     }
 
-//    @Test
-//    @DisplayName("testing delete method")
-//    void deleteHotels() {
-//        int expectedHotels = 2;
-//        Hotel foundHotel = hotelDAO.getById(1);
-//        hotelDAO.delete(foundHotel.getId());
-//
-//        List<Hotel> hotels = hotelDAO.getAll();
-//
-//        boolean found = hotels.stream().anyMatch(h -> h.getName().equals(foundHotel.getName()) && h.getAddress().equals(foundHotel.getName()));
-//
-//        assertFalse("The hotel was not deleted", found);
-//
-//    }
+    @Test
+    @DisplayName("testing delete method")
+    void deleteRoos() {
+        int expectedRooms = 2;
+        Room foundRoom = roomDAO.getById(1);
+        roomDAO.delete(foundRoom.getId());
+
+        List<Room> rooms = roomDAO.getAll();
+
+        boolean notFound = rooms.stream().anyMatch(r -> r.getNumber() == foundRoom.getNumber() && r.getPrice() == foundRoom.getPrice());
+
+        assertFalse("The room was not deleted", notFound);
+
+    }
 }
