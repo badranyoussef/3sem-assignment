@@ -106,7 +106,7 @@ class RoomDAOTest {
 
     @Test
     @DisplayName("testing delete method")
-    void deleteRoos() {
+    void deleteRoom() {
         int expectedRooms = 2;
         Room foundRoom = roomDAO.getById(1);
         roomDAO.delete(foundRoom.getId());
