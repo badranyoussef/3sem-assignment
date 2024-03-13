@@ -1,17 +1,13 @@
 package day3and4JavalinCRUD.dao;
 
-import day3and4JavalinCRUD.config.HibernateConfig;
-import day3and4JavalinCRUD.dto.HotelDto;
-import day3and4JavalinCRUD.ressources.Hotel;
+
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.TypedQuery;
+
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
-
-import java.lang.reflect.Type;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public abstract class DAOGeneric<T, ID> implements IDAO<T, ID> {
 
