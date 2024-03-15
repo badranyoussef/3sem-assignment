@@ -27,6 +27,7 @@ public class UserDAO implements ISecurityDAO{
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         User user = new User(username, password);
+
         em.persist(user);
         em.getTransaction().commit();
         em.close();

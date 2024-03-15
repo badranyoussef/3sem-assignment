@@ -1,6 +1,7 @@
 package hotelEx2Security.dto;
 
 import hotelEx2Security.model.User;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -13,6 +14,7 @@ import java.util.Set;
 @Getter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserDTO {
 
     private String username;

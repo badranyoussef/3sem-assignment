@@ -20,8 +20,11 @@ import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityNotFoundException;
+import org.eclipse.jetty.server.RequestLog;
 
 import java.sql.Date;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Set;
 
 public class SecurityController {
@@ -141,16 +144,12 @@ public class SecurityController {
                 throw new IllegalArgumentException("UserDTO is null");
             }
 
-//            // Convert roles to a comma-separated string
-            Set<String> roles = user.getRoles();
-            String rolesString = String.join(",", roles);
-
             // Build the JWT claims set
             JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
                     .subject(user.getUsername())
                     .issuer(ISSUER)
                     .claim("username", user.getUsername())
-                    //.claim("roles", rolesString)
+                    .claim("roles", user.getRoles().stream().reduce((s1, s2) -> s1 + "," + s2).get())
                     .expirationTime(new Date(System.currentTimeMillis() + Long.parseLong(TOKEN_EXPIRE_TIME)))
                     .build();
 

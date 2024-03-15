@@ -1,6 +1,7 @@
 package hotelEx2Security.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
@@ -41,6 +42,12 @@ public class User implements Serializable {
                 //ovenfor krypterer jeg password på en linje
 //        String salt = BCrypt.gensalt();
 //        this.userPassword = BCrypt.hashpw(userPassword, salt);
+    }
+
+    public User(String username, String userPassword, Set<Role> roleList) {
+        this.username = username;
+        this.userPassword = BCrypt.hashpw(userPassword, BCrypt.gensalt());
+        this.roleList = roleList;
     }
 
     public Set<String> getRolesAsStrings() {
