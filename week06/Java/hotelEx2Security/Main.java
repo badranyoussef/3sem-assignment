@@ -31,6 +31,9 @@ public class Main {
 
         System.out.println(user.getUsername());
 
+        //TODO: Create token voirkede ikke da brugerne som var persisteret ikke havde roller. Opdater nye metoder således at når en bruger oprettes
+        //TODO: skal der tillknyttes en rolle. Derefter skal helel projektet ryddes op.
+
 
     }
 
