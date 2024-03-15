@@ -41,27 +41,58 @@ public class UserDAO implements ISecurityDAO{
             return user;
     }
 
-    public static void main(String[] args){
-        EntityManagerFactory emf = HibernateConfig.getEntityManagerFactoryConfig(false);
-
-        UserDAO dao = new UserDAO(emf);
-//        dao.createUser("youssef", "youssef");
-
-        try{
-            User user = dao.verifyUser("youssef", "youssef1");
-            System.out.println(user.getUsername());
-        }catch (EntityNotFoundException e){
-            e.printStackTrace();
+    @Override
+    public Role createRole(String role) {
+        try (EntityManager em = emf.createEntityManager()) {
+            em.getTransaction().begin();
+            Role newRole = new Role(role);
+            em.persist(newRole);
+            em.getTransaction().commit();
+            return newRole;
         }
     }
 
     @Override
-    public Role createRole(String role) {
-        return null;
+    public User addRoleToUser(String username, String role) {
+        EntityManager em = emf.createEntityManager();
+        User user = em.find(User.class, username);
+        Role _role =  em.find(Role.class, role);
+        if(user != null){
+            user.addRole(_role);
+            em.getTransaction().begin();
+            em.merge(user);
+            em.getTransaction().commit();
+        }else{
+            throw new EntityNotFoundException("User not found. Therefore no role added");
+        }
+        return user;
     }
 
-    @Override
-    public User addRoleToUser(String username, String role) {
-        return null;
+
+    public static void main(String[] args){
+        EntityManagerFactory emf = HibernateConfig.getEntityManagerFactoryConfig(false);
+
+        UserDAO dao = new UserDAO(emf);
+
+
+
+//        dao.createUser("youssef", "youssef");
+
+//        try{
+//            User user = dao.verifyUser("youssef", "youssef1");
+//            System.out.println(user.getUsername());
+//        }catch (EntityNotFoundException e){
+//            e.printStackTrace();
+//        }
+
+        Role role = new Role("admin");
+
+        try{
+            User user = dao.verifyUser("youssef", "youssef");
+            user.addRole(role);
+        }catch (EntityNotFoundException e){
+            e.printStackTrace();
+        }
+
     }
 }

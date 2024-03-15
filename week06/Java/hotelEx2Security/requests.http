@@ -1,0 +1,16 @@
+POST http://localhost:7007/api/auth/login
+
+{
+"username": "youssef",
+"password": "youssef"
+}
+
+###
+
+POST http://localhost:7007/api/hotels/create
+
+{
+"address": "Falkoner Allé",
+"name": "Scandic"
+}
+###

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
+import hotelEx2Security.config.ApplicationConfig;
 import hotelEx2Security.dto.UserDTO;
 import hotelEx2Security.exceptions.AuthorizationException;
 import lombok.AccessLevel;
@@ -18,7 +19,7 @@ import java.util.*;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TokenFactory {
-
+//
 //    // Singleton
 //    private static TokenFactory instance;
 //

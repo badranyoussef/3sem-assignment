@@ -2,8 +2,15 @@ package hotelEx2Security.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import hotelEx2Security.persistence.HibernateConfig;
+import hotelEx2Security.routes.Route;
 import io.javalin.Javalin;
 import io.javalin.apibuilder.EndpointGroup;
+
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 public class ApplicationConfig {
     ObjectMapper om = new ObjectMapper();
@@ -48,6 +55,7 @@ public class ApplicationConfig {
             ObjectNode node = om.createObjectNode().put("errorMessage", e.getMessage());
             ctx.status(500).json(node);
         });
+
         app.error(404, ctx -> {
             ctx.status(404).result("Not Found");
         });
@@ -61,4 +69,22 @@ public class ApplicationConfig {
     public void stopServer() {
         app.stop();
     }
+
+    public static String getProperty(String propName) throws IOException
+    {
+        try (InputStream is = HibernateConfig.class.getClassLoader().getResourceAsStream("properties-from-pom.properties"))
+        {
+            Properties prop = new Properties();
+            prop.load(is);
+            return prop.getProperty(propName);
+        } catch (IOException ex) {
+            //LOGGER.error("Could not read property from pom file. Build Maven!");
+            throw new IOException("Could not read property from pom file. Build Maven!");
+        }
+    }
+
+    public Javalin getApp(){
+        return app;
+    }
+
 }

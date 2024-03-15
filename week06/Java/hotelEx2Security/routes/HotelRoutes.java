@@ -9,14 +9,12 @@ import jakarta.persistence.EntityManagerFactory;
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class HotelRoutes {
-    private static EntityManagerFactory emf = HibernateConfig.getEntityManagerFactoryConfig(false);
     private static HotelDAO hDAO;
     public HotelRoutes(EntityManagerFactory emf){
         hDAO = HotelDAO.getInstance(emf);
     }
 
     public EndpointGroup getHotelRoutes() {
-
         return () -> {
             path("hotels", () -> {
                 get("/", HotelController.getAll(hDAO));

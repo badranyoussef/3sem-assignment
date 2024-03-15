@@ -16,7 +16,14 @@ import java.util.Set;
 public class UserDTO {
 
     private String username;
+    private String password;
     private Set<String> roles;
+
+
+    public UserDTO(String username, String password){
+        this.username = username;
+        this.password = password;
+    }
 
     public UserDTO(String username, String[] roles) {
         this.username = username;
