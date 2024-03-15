@@ -82,9 +82,4 @@ public class ApplicationConfig {
             throw new IOException("Could not read property from pom file. Build Maven!");
         }
     }
-
-    public Javalin getApp(){
-        return app;
-    }
-
 }

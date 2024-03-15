@@ -2,15 +2,25 @@ POST http://localhost:7007/api/auth/login
 
 {
 "username": "youssef",
-"password": "youssef"
+"password": "1234"
 }
 
 ###
 
-POST http://localhost:7007/api/hotels/create
+
+POST http://localhost:7007/api/auth/register
 
 {
-"address": "Falkoner Allé",
-"name": "Scandic"
+"username": "lasse",
+"userpassword": "1234"
 }
+
 ###
+
+#POST http://localhost:7007/api/hotels/create
+#
+#{
+#"address": "Falkoner Allé",
+#"name": "Hillerød Hotel"
+#}
+####

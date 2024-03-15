@@ -1,28 +1,21 @@
 package hotelEx2Security.routes;
 
-import day3and4JavalinCRUD.config.HibernateConfig;
+
 import hotelEx2Security.Security.RouteRoles;
-import hotelEx2Security.controller.ExceptionController;
-import hotelEx2Security.controller.HotelController;
-import hotelEx2Security.controller.RoomController;
-import hotelEx2Security.controller.UserController;
+import hotelEx2Security.controller.*;
 import hotelEx2Security.dao.HotelDAO;
 import hotelEx2Security.dao.RoomDAO;
 import hotelEx2Security.dao.UserDAO;
-import io.javalin.Javalin;
+import hotelEx2Security.persistence.HibernateConfig;
 import io.javalin.apibuilder.EndpointGroup;
-import io.javalin.http.Context;
 import jakarta.persistence.EntityManagerFactory;
-import org.slf4j.LoggerFactory;
-
-import java.util.logging.Logger;
-
+import io.javalin.apibuilder.EndpointGroup;
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class Route {
 
     private static EntityManagerFactory emf = HibernateConfig.getEntityManagerFactoryConfig(false);
-    private final ExceptionController exceptionController = new ExceptionController();
+//    private final ExceptionController exceptionController = new ExceptionController();
 //    private int count = 0;
 
 //    private final HotelRoutes hotelRoute = new HotelRoutes(emf);
@@ -33,6 +26,10 @@ public class Route {
     private static RoomDAO rDAO = RoomDAO.getInstance(emf);
     private static UserDAO uDAO = UserDAO.getInstance(emf);
     private static UserController userController = new UserController();
+    private static SecurityController securityController = new SecurityController(uDAO);
+
+
+
 
     public static EndpointGroup getRoomRoutes() {
         return () -> {
@@ -49,8 +46,8 @@ public class Route {
     public static EndpointGroup getUserRoutes() {
         return () -> {
             path("/auth", () -> {
-                post("/login", userController.login (uDAO), RouteRoles.ANYONE);
-                //post("/register", userController::register, RouteRoles.ANYONE);
+                post("/login", securityController.login());
+                post("/register", securityController.register());
             });
         };
     }
