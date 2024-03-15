@@ -150,7 +150,7 @@ public class SecurityController {
                     .subject(user.getUsername())
                     .issuer(ISSUER)
                     .claim("username", user.getUsername())
-                    .claim("roles", rolesString)
+                    //.claim("roles", rolesString)
                     .expirationTime(new Date(System.currentTimeMillis() + Long.parseLong(TOKEN_EXPIRE_TIME)))
                     .build();
 
