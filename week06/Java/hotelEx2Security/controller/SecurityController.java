@@ -178,14 +178,15 @@ public class SecurityController {
         }
     }
 
+
+
     public Handler register() {
         return (ctx) -> {
             ObjectMapper objectMapper = new ObjectMapper();
             ObjectNode returnObject = objectMapper.createObjectNode();
             try {
                 UserDTO userInput = ctx.bodyAsClass(UserDTO.class);
-                User created = userDAO.createUser(userInput.getUsername(), userInput.getPassword());
-
+                User created = userDAO.createUser(userInput.getUsername(), userInput.getPassword(), userInput.getRoles());
                 String token = createToken(new UserDTO(created));
                 ctx.status(HttpStatus.CREATED).json(new TokenDTO(token, userInput.getUsername()));
             } catch (EntityExistsException e) {
@@ -194,4 +195,21 @@ public class SecurityController {
             }
         };
     }
+
+//    public Handler register() {
+//        return (ctx) -> {
+//            ObjectMapper objectMapper = new ObjectMapper();
+//            ObjectNode returnObject = objectMapper.createObjectNode();
+//            try {
+//                UserDTO userInput = ctx.bodyAsClass(UserDTO.class);
+//                User created = userDAO.createUser(userInput.getUsername(), userInput.getPassword(), userInput.getRoles());
+//
+//                String token = createToken(new UserDTO(created));
+//                ctx.status(HttpStatus.CREATED).json(new TokenDTO(token, userInput.getUsername()));
+//            } catch (EntityExistsException e) {
+//                ctx.status(HttpStatus.UNPROCESSABLE_CONTENT);
+//                ctx.json(returnObject.put("msg", "User already exists"));
+//            }
+//        };
+//    }
 }

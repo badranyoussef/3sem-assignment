@@ -11,8 +11,9 @@ POST http://localhost:7007/api/auth/login
 POST http://localhost:7007/api/auth/register
 
 {
-"username": "Thomas",
-"password": "1234"
+"username": "Thomass",
+"password": "1234",
+"roles": ["admin"]
 }
 
 ###

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -25,7 +26,7 @@ public class Role implements Serializable {
     private String roleName;
 
     @ManyToMany(mappedBy = "roleList")
-    private Set<User> users;
+    private Set<User> users = new HashSet<>();
 
     public Role(String roleName) {
         this.roleName = roleName;

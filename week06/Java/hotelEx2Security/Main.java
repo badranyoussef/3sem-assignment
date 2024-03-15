@@ -37,7 +37,11 @@ public class Main {
         //TODO: Create token virkede ikke da brugerne som var persisteret ikke havde roller. Opdater nye metoder således at når en bruger oprettes
         //TODO: skal der tillknyttes en rolle. Derefter skal helel projektet ryddes op.
 
-
+//        User user = new User("Badran", "1234");
+//        Role role = new Role("admin");
+//        user.addRole(role);
+//
+//        dao.createUser(user);
 
     }
 

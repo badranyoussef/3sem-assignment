@@ -7,6 +7,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityNotFoundException;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 public class UserDAO implements ISecurityDAO{
     private static EntityManagerFactory emf;
     private static UserDAO instance;
@@ -24,9 +27,28 @@ public class UserDAO implements ISecurityDAO{
 
     @Override
     public User createUser(String username, String password) {
+        return null;
+    }
+
+    public User createUser(User user) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(user);
+        em.getTransaction().commit();
+        em.close();
+        return user;
+    }
+
+    @Override
+    public User createUser(String username, String password, Set<String> roles) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         User user = new User(username, password);
+
+        Set<Role> rolesSet = roles.stream().map(s -> new Role(s)).collect(Collectors.toSet());
+        for (Role role : rolesSet) {
+            user.addRole(role);
+        }
 
         em.persist(user);
         em.getTransaction().commit();
