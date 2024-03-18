@@ -74,35 +74,35 @@ public class ApplicationConfig {
     }
 
 
-    public ApplicationConfig checkSecurityRoles() {
-
-        JsonMapper jsonMapper = new JsonMapper();
-
-        // Check roles on the user (ctx.attribute("username") and compare with permittedRoles using security
-        app.updateConfig(config -> {
-            config.accessManager((handler, ctx, permittedRoles) -> {
-// permitted roles are defined in the last arg to routes: get("/", ctx -> ctx.result("Hello
-                Set<String> allowedRoles = permittedRoles.stream().map(role -> role.toString().toUpperCase()).collect(Collectors.toSet());
-                if (allowedRoles.contains("ANYONE") || ctx.method().toString().equals("OPTIONS")) {
-// Allow requests from anyone and OPTIONS requests (preflight in CORS)
-                    handler.handle(ctx);
-                    return;
-                }
-                UserDTO user = ctx.attribute("user");
-                System.out.println("USER IN CHECK_SEC_ROLES: " + user);
-                if (user == null)
-                    ctx.status(HttpStatus.FORBIDDEN)
-                            .json(jsonMapper.createObjectNode().put("msg", "Not authorized. No username were added from the token"));
-
-                //TODO der skal et tjek her hvor user og allowed rows valideres.
-                if (SecurityController.getInstance().authorize(user, allowedRoles))
-                    handler.handle(ctx);
-                else
-                    throw new AuthorizationException(HttpStatus.FORBIDDEN.getCode(), "Unauthorized with roles: " + allowedRoles);
-            });
-        });
-        return instance;
-    }
+//    public ApplicationConfig checkSecurityRoles() {
+//
+//        JsonMapper jsonMapper = new JsonMapper();
+//
+//        // Check roles on the user (ctx.attribute("username") and compare with permittedRoles using security
+//        app.updateConfig(config -> {
+//            config.accessManager((handler, ctx, permittedRoles) -> {
+//// permitted roles are defined in the last arg to routes: get("/", ctx -> ctx.result("Hello
+//                Set<String> allowedRoles = permittedRoles.stream().map(role -> role.toString().toUpperCase()).collect(Collectors.toSet());
+//                if (allowedRoles.contains("ANYONE") || ctx.method().toString().equals("OPTIONS")) {
+//// Allow requests from anyone and OPTIONS requests (preflight in CORS)
+//                    handler.handle(ctx);
+//                    return;
+//                }
+//                UserDTO user = ctx.attribute("user");
+//                System.out.println("USER IN CHECK_SEC_ROLES: " + user);
+//                if (user == null)
+//                    ctx.status(HttpStatus.FORBIDDEN)
+//                            .json(jsonMapper.createObjectNode().put("msg", "Not authorized. No username were added from the token"));
+//
+//                //TODO der skal et tjek her hvor user og allowed rows valideres.
+//                if (SecurityController.getInstance().authorize(user, allowedRoles))
+//                    handler.handle(ctx);
+//                else
+//                    throw new AuthorizationException(HttpStatus.FORBIDDEN.getCode(), "Unauthorized with roles: " + allowedRoles);
+//            });
+//        });
+//        return instance;
+//    }
 
 
     public void stopServer() {

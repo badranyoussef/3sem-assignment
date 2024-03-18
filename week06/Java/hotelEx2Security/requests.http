@@ -11,9 +11,9 @@ POST http://localhost:7007/api/auth/login
 POST http://localhost:7007/api/auth/register
 
 {
-"username": "Jeddddns",
+"username": "hahaha",
 "password": "1234",
-"roles": ["admin"]
+"roles": ["user"]
 }
 
 ###

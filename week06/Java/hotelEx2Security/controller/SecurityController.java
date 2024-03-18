@@ -34,17 +34,6 @@ public class SecurityController {
         this.userDAO = userDAO;
     }
 
-    private static SecurityController instance;
-
-    public static SecurityController getInstance(EntityManagerFactory _emf){
-        if(instance == null){
-            emf = _emf;
-            instance = new SecurityController(emf);
-        }
-        return instance;
-    }
-
-
     public Handler authenticate() {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode returnObject = objectMapper.createObjectNode();
