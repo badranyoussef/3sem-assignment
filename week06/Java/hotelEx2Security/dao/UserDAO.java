@@ -27,7 +27,13 @@ public class UserDAO implements ISecurityDAO{
 
     @Override
     public User createUser(String username, String password) {
-        return null;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        User user = new User(username, password);
+        em.persist(user);
+        em.getTransaction().commit();
+        em.close();
+        return user;
     }
 
     public User createUser(User user) {

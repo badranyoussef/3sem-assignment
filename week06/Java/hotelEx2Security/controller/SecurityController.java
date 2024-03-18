@@ -23,17 +23,27 @@ import jakarta.persistence.EntityNotFoundException;
 import org.eclipse.jetty.server.RequestLog;
 
 import java.sql.Date;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
+
 
 public class SecurityController {
 
+    private static EntityManagerFactory emf;
     private static UserDAO userDAO;
     private static String SECRET_KEY = "nSUGc/1kEiZl97XiCSCrqEM61g0aIINEHzz1TR/tRLg8gWBfjVIhzlOc5TXkiR4h"; // Skal mindst være 256 bits.
     public SecurityController(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
+
+    private static SecurityController instance;
+
+    public static SecurityController getInstance(EntityManagerFactory _emf){
+        if(instance == null){
+            emf = _emf;
+            instance = new SecurityController(emf);
+        }
+        return instance;
+    }
+
 
     public Handler authenticate() {
         ObjectMapper objectMapper = new ObjectMapper();

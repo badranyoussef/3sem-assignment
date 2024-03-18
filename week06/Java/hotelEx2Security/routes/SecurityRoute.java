@@ -1,20 +1,21 @@
 package hotelEx2Security.routes;
 
 
-
-
-import hotelEx2Security.controller.*;
+import hotelEx2Security.Security.RouteRoles;
+import hotelEx2Security.controller.HotelController;
+import hotelEx2Security.controller.RoomController;
+import hotelEx2Security.controller.SecurityController;
+import hotelEx2Security.controller.UserController;
 import hotelEx2Security.dao.HotelDAO;
 import hotelEx2Security.dao.RoomDAO;
 import hotelEx2Security.dao.UserDAO;
 import hotelEx2Security.persistence.HibernateConfig;
 import io.javalin.apibuilder.EndpointGroup;
-import io.javalin.security.RouteRole;
 import jakarta.persistence.EntityManagerFactory;
-import io.javalin.apibuilder.EndpointGroup;
+
 import static io.javalin.apibuilder.ApiBuilder.*;
 
-public class Route {
+public class SecurityRoute {
 
     private static EntityManagerFactory emf = HibernateConfig.getEntityManagerFactoryConfig(false);
 //    private final ExceptionController exceptionController = new ExceptionController();
@@ -33,23 +34,12 @@ public class Route {
 
 
 
-    public static EndpointGroup getRoomRoutes() {
-        return () -> {
-            path("rooms", () -> {
-                get("/", RoomController.getAll(rDAO));
-                get("/{id}", RoomController.getRoom(rDAO));
-                post("/create/{hotelId}", RoomController.create(rDAO, hDAO));
-                delete("/delete/{id}", RoomController.delete(rDAO));
-                put("/update/{id}", RoomController.update(rDAO));
-            });
-        };
-    }
 
-    public static EndpointGroup getUserRoutes() {
+    public static EndpointGroup getSecurityRoutes() {
         return () -> {
             path("/auth", () -> {
-                post("/login", securityController.login(), Role.ANYONE);
-                post("/register", securityController.register());
+                post("/login", securityController.login(), RouteRoles.ANYONE);
+                post("/register", securityController.register(), RouteRoles.USER);
             });
         };
     }
@@ -68,7 +58,7 @@ public class Route {
     }
 
 
-public enum Role implements RouteRole {ANYONE, USER, ADMIN}
+
 
 
 
