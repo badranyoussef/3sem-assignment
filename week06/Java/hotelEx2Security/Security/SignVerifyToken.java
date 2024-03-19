@@ -5,7 +5,6 @@ import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
-import hotelEx2Security.dto.UserDTO;
 import hotelEx2Security.exceptions.AuthorizationException;
 
 import java.text.ParseException;
@@ -61,16 +60,16 @@ public class SignVerifyToken {
         return signedJWT;
     }
 
-    public UserDTO getJWTClaimsSet(JWTClaimsSet claimsSet) throws AuthorizationException {
-
-        if (new Date().after(claimsSet.getExpirationTime()))
-            throw new AuthorizationException(401, "Token is expired");
-
-        String username = claimsSet.getClaim("username").toString();
-        String roles = claimsSet.getClaim("roles").toString();
-        String[] rolesArray = roles.split(",");
-
-        return new UserDTO(username, rolesArray);
-    }
+//    public UserDTO getJWTClaimsSet(JWTClaimsSet claimsSet) throws AuthorizationException {
+//
+//        if (new Date().after(claimsSet.getExpirationTime()))
+//            throw new AuthorizationException(401, "Token is expired");
+//
+//        String username = claimsSet.getClaim("username").toString();
+//        String roles = claimsSet.getClaim("roles").toString();
+//        String[] rolesArray = roles.split(",");
+//
+//        return new UserDTO(username, rolesArray);
+//    }
 
 }

@@ -30,6 +30,14 @@ public class UserDAO implements ISecurityDAO{
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         User user = new User(username, password);
+
+        Role role = em.find(Role.class, "user");
+        if (role == null){
+            role = new Role("user");
+            em.persist(role);
+        }
+
+        user.addRole(role);
         em.persist(user);
         em.getTransaction().commit();
         em.close();

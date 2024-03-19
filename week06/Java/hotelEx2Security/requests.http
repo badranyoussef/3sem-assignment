@@ -1,7 +1,7 @@
 POST http://localhost:7007/api/auth/login
 
 {
-"username": "Jensen",
+"username": "youssef",
 "password": "1234"
 }
 
@@ -11,10 +11,18 @@ POST http://localhost:7007/api/auth/login
 POST http://localhost:7007/api/auth/register
 
 {
-"username": "hahaha",
-"password": "1234",
-"roles": ["user"]
+"username": "youssef",
+"password": "1234"
 }
+
+###
+GET http://localhost:7007/api/protected/user_login_with_token
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJZb3Vzc2VmIEJhZHJhbiIsInN1YiI6InlvdXNzZWYiLCJleHAiOjE3MTA4ODIwOTAsInJvbGVzIjoiYWRtaW4iLCJ1c2VybmFtZSI6InlvdXNzZWYifQ.h529ljuiVQXxia6lEOXcadZbCx6yTZQ3rDyJVftkhqk
+
+###
+
+GET http://localhost:7007/api/protected/admin_login_with_token
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJZb3Vzc2VmIEJhZHJhbiIsInN1YiI6InlvdXNzZWYiLCJleHAiOjE3MTA4ODIwOTAsInJvbGVzIjoiYWRtaW4iLCJ1c2VybmFtZSI6InlvdXNzZWYifQ.h529ljuiVQXxia6lEOXcadZbCx6yTZQ3rDyJVftkhqk
 
 ###
 

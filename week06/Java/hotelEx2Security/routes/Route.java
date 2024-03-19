@@ -1,8 +1,7 @@
 package hotelEx2Security.routes;
 
 
-
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 import hotelEx2Security.controller.*;
 import hotelEx2Security.dao.HotelDAO;
 import hotelEx2Security.dao.RoomDAO;
@@ -12,11 +11,13 @@ import io.javalin.apibuilder.EndpointGroup;
 import io.javalin.security.RouteRole;
 import jakarta.persistence.EntityManagerFactory;
 import io.javalin.apibuilder.EndpointGroup;
+
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class Route {
 
     private static EntityManagerFactory emf = HibernateConfig.getEntityManagerFactoryConfig(false);
+    private static ObjectMapper jsonMapper = new ObjectMapper();
 //    private final ExceptionController exceptionController = new ExceptionController();
 //    private int count = 0;
 
@@ -28,10 +29,22 @@ public class Route {
     private static RoomDAO rDAO = RoomDAO.getInstance(emf);
     private static UserDAO uDAO = UserDAO.getInstance(emf);
     private static UserController userController = new UserController();
-    private static SecurityController securityController = new SecurityController(uDAO);
+    private static SecurityController securityController = new SecurityController();
 
 
-
+    public static EndpointGroup getRoutes() {
+        return () -> {
+            // Integrerer hver gruppe af ruter indenfor en samlet rute-definition
+            path("/", () -> {
+                // Her kaldes hver af de metoder, der returnerer en EndpointGroup,
+                // for at sikre, at de bliver korrekt registreret i rute-hierarkiet.
+//                path("", getRoomRoutes());
+                path("", getUserRoutes());
+//                path("", getSecuredRoutes());
+//                path("", getHotelRoutes());
+            });
+        };
+    }
 
     public static EndpointGroup getRoomRoutes() {
         return () -> {
@@ -47,9 +60,19 @@ public class Route {
 
     public static EndpointGroup getUserRoutes() {
         return () -> {
-            path("/auth", () -> {
+            path("auth", () -> {
                 post("/login", securityController.login(), Role.ANYONE);
-                post("/register", securityController.register());
+                post("/register", securityController.register(), Role.ANYONE);
+            });
+        };
+    }
+
+    public static EndpointGroup getSecuredRoutes() {
+        return () -> {
+            path("/protected", () -> {
+                before(securityController.authenticate()); // alle forespørger som kommer ind bliver fanget her og bliver behandlet
+                get("/user_login_with_token", (ctx) -> ctx.json(jsonMapper.createObjectNode().put("msg", "Hello from USER Protected")), Role.USER);
+                get("/admin_login_with_token", (ctx) -> ctx.json(jsonMapper.createObjectNode().put("msg", "Hello from ADMIN Protected")), Role.ADMIN);
             });
         };
     }
@@ -68,11 +91,9 @@ public class Route {
     }
 
 
-public enum Role implements RouteRole {ANYONE, USER, ADMIN}
+    public enum Role implements RouteRole {ANYONE, USER, ADMIN}
 
-
-
-    //private final Logger LOGGER = LoggerFactory.getLogger(Routes.class);
+//    private final Logger LOGGER = LoggerFactory.getLogger(Routes.class);
 
 //    private void requestInfoHandler(Context ctx) {
 //        String requestInfo = ctx.req().getMethod() + " " + ctx.req().getRequestURI();

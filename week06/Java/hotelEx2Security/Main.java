@@ -2,13 +2,9 @@ package hotelEx2Security;
 
 import hotelEx2Security.config.ApplicationConfig;
 import hotelEx2Security.dao.UserDAO;
-import hotelEx2Security.model.Role;
-import hotelEx2Security.model.User;
 import hotelEx2Security.persistence.HibernateConfig;
 import hotelEx2Security.routes.Route;
 import jakarta.persistence.EntityManagerFactory;
-
-import java.util.Set;
 
 public class Main {
 
@@ -21,9 +17,11 @@ public class Main {
         applicationConfig.initiateServer()
                 .startServer(7007)
                 .setExceptionHandling()
+                .checkSecurityRoles()
                 .setRoute(Route.getHotelRoutes())
                 .setRoute(Route.getUserRoutes())
-                .setRoute(Route.getRoomRoutes());
+                .setRoute(Route.getRoomRoutes())
+                .setRoute(Route.getSecuredRoutes());
 
 
         UserDAO dao = UserDAO.getInstance(emf);

@@ -29,7 +29,7 @@ public class SecurityRoute {
     private static RoomDAO rDAO = RoomDAO.getInstance(emf);
     private static UserDAO uDAO = UserDAO.getInstance(emf);
     private static UserController userController = new UserController();
-    private static SecurityController securityController = new SecurityController(uDAO);
+    private static SecurityController securityController = new SecurityController();
 
 
 
