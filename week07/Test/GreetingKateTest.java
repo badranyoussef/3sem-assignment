@@ -82,6 +82,6 @@ public class GreetingKateTest {
         assertEquals("Hello, Jill and Jane.", greetAllWithObject(arrNames));
 
     }
-    
+
 
 }
