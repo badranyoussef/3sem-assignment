@@ -3,7 +3,7 @@ package hotelEx2Security.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import hotelEx2Security.controller.SecurityController;
+import hotelEx2Security.controllers.SecurityController;
 import hotelEx2Security.dto.UserDTO;
 import hotelEx2Security.exceptions.AuthorizationException;
 import hotelEx2Security.persistence.HibernateConfig;
@@ -83,10 +83,10 @@ public class ApplicationConfig {
         // Check roles on the user (ctx.attribute("username") and compare with permittedRoles using security
         app.updateConfig(config -> {
             config.accessManager((handler, ctx, permittedRoles) -> {
-// permitted roles are defined in the last arg to routes: get("/", ctx -> ctx.result("Hello
+                        // permitted roles are defined in the last arg to routes: get("/", ctx -> ctx.result("Hello
                 Set<String> allowedRoles = permittedRoles.stream().map(role -> role.toString().toUpperCase()).collect(Collectors.toSet());
                 if (allowedRoles.contains("ANYONE") || ctx.method().toString().equals("OPTIONS")) {
-// Allow requests from anyone and OPTIONS requests (preflight in CORS)
+                        // Allow requests from anyone and OPTIONS requests (preflight in CORS)
                     handler.handle(ctx);
                     return;
                 }

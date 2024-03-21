@@ -2,50 +2,26 @@ package hotelEx2Security.routes;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hotelEx2Security.controller.*;
-import hotelEx2Security.dao.HotelDAO;
-import hotelEx2Security.dao.RoomDAO;
-import hotelEx2Security.dao.UserDAO;
+import hotelEx2Security.Security.RouteRoles;
+import hotelEx2Security.controllers.*;
+import hotelEx2Security.daos.HotelDAO;
+import hotelEx2Security.daos.RoomDAO;
 import hotelEx2Security.persistence.HibernateConfig;
 import io.javalin.apibuilder.EndpointGroup;
-import io.javalin.security.RouteRole;
 import jakarta.persistence.EntityManagerFactory;
-import io.javalin.apibuilder.EndpointGroup;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class Route {
 
     private static EntityManagerFactory emf = HibernateConfig.getEntityManagerFactoryConfig(false);
-    private static ObjectMapper jsonMapper = new ObjectMapper();
-//    private final ExceptionController exceptionController = new ExceptionController();
-//    private int count = 0;
-
-//    private final HotelRoutes hotelRoute = new HotelRoutes(emf);
-//    private final RoomRoutes roomRoute = new RoomRoutes(emf);
-//    private final UserRoutes userRoutes = new UserRoutes(emf);
-
     private static HotelDAO hDAO = HotelDAO.getInstance(emf);
     private static RoomDAO rDAO = RoomDAO.getInstance(emf);
-    private static UserDAO uDAO = UserDAO.getInstance(emf);
-    private static UserController userController = new UserController();
-    private static SecurityController securityController = new SecurityController();
-
-
-    public static EndpointGroup getRoutes() {
-        return () -> {
-            // Integrerer hver gruppe af ruter indenfor en samlet rute-definition
-            path("/", () -> {
-                // Her kaldes hver af de metoder, der returnerer en EndpointGroup,
-                // for at sikre, at de bliver korrekt registreret i rute-hierarkiet.
-//                path("", getRoomRoutes());
-                path("", getUserRoutes());
-//                path("", getSecuredRoutes());
-//                path("", getHotelRoutes());
-            });
-        };
-    }
-
+    private static ISecurityController securityController = new SecurityController();
+    private static ObjectMapper jsonMapper = new ObjectMapper();
+    private static RouteRoles roles;
+    
+    
     public static EndpointGroup getRoomRoutes() {
         return () -> {
             path("rooms", () -> {
@@ -61,8 +37,8 @@ public class Route {
     public static EndpointGroup getUserRoutes() {
         return () -> {
             path("auth", () -> {
-                post("/login", securityController.login(), Role.ANYONE);
-                post("/register", securityController.register(), Role.ANYONE);
+                post("/login", securityController.login(), roles.ANYONE);
+                post("/register", securityController.register(), roles.ANYONE);
             });
         };
     }
@@ -71,8 +47,8 @@ public class Route {
         return () -> {
             path("/protected", () -> {
                 before(securityController.authenticate()); // alle forespørger som kommer ind bliver fanget her og bliver behandlet
-                get("/user_login_with_token", (ctx) -> ctx.json(jsonMapper.createObjectNode().put("msg", "Hello from USER Protected")), Role.USER);
-                get("/admin_login_with_token", (ctx) -> ctx.json(jsonMapper.createObjectNode().put("msg", "Hello from ADMIN Protected")), Role.ADMIN);
+                get("/user_login_with_token", (ctx) -> ctx.json(jsonMapper.createObjectNode().put("msg", "Hello from USER Protected")), roles.USER);
+                get("/admin_login_with_token", (ctx) -> ctx.json(jsonMapper.createObjectNode().put("msg", "Hello from ADMIN Protected")), roles.ADMIN);
             });
         };
     }
@@ -91,33 +67,37 @@ public class Route {
     }
 
 
-    public enum Role implements RouteRole {ANYONE, USER, ADMIN}
+//    Således kan jeg samle alle route og dermed kalde en metode som returnerer alle routes
+    public static EndpointGroup getAllRoutes() {
+        return () -> {
+            // Samler alle dine ruter her
+            path("rooms", () -> {
+                get("/", RoomController.getAll(rDAO), roles.ADMIN, roles.USER);
+                get("/{id}", RoomController.getRoom(rDAO), roles.ANYONE);
+                post("/create/{hotelId}", RoomController.create(rDAO, hDAO), roles.ANYONE);
+                delete("/delete/{id}", RoomController.delete(rDAO), roles.ANYONE);
+                put("/update/{id}", RoomController.update(rDAO), roles.ANYONE);
+            });
 
-//    private final Logger LOGGER = LoggerFactory.getLogger(Routes.class);
+            path("auth", () -> {
+                post("/login", securityController.login(), roles.ANYONE);
+                post("/register", securityController.register(), roles.ANYONE);
+            });
 
-//    private void requestInfoHandler(Context ctx) {
-//        String requestInfo = ctx.req().getMethod() + " " + ctx.req().getRequestURI();
-//        ctx.attribute("requestInfo", requestInfo);
-//    }
+            path("/protected", () -> {
+                before(securityController.authenticate());
+                get("/user_login_with_token", (ctx) -> ctx.json(jsonMapper.createObjectNode().put("msg", "Hello from USER Protected")), roles.USER);
+                get("/admin_login_with_token", (ctx) -> ctx.json(jsonMapper.createObjectNode().put("msg", "Hello from ADMIN Protected")), roles.ADMIN);
+            });
 
-//    public EndpointGroup getRoutes(Javalin app) {
-//        return () -> {
-//            app.before(this::requestInfoHandler);
-//
-//            app.routes(() -> {
-//                path("/", userRoutes.getUserRoutes());
-//                path("/", hotelRoute.getHotelRoutes());
-//                path("/", roomRoute.getRoomRoutes());
-//            });
-
-//            app.after(ctx -> LOGGER.info(" Request {} - {} was handled with status code {}", count++, ctx.attribute("requestInfo"), ctx.status()));
-//
-//            app.exception(ConstraintViolationException.class, exceptionController::constraintViolationExceptionHandler);
-//            app.exception(ValidationException.class, exceptionController::validationExceptionHandler);
-//            app.exception(ApiException.class, exceptionController::apiExceptionHandler);
-//            app.exception(AuthorizationException.class, exceptionController::exceptionHandlerNotAuthorized);
-//            app.exception(Exception.class, exceptionController::exceptionHandler);
-//
-//        };
-//    }
+            path("hotels", () -> {
+                get("/", HotelController.getAll(hDAO), roles.ANYONE);
+                get("{id}", HotelController.getHotel(hDAO), roles.ANYONE);
+                get("{id}/rooms", HotelController.getHotelRooms(hDAO), roles.ANYONE);
+                post("create", HotelController.create(hDAO), roles.ANYONE);
+                delete("delete/{id}", HotelController.delete(hDAO), roles.ANYONE);
+                put("update/{id}", HotelController.update(hDAO), roles.ANYONE);
+            });
+        };
+    }
 }

@@ -11,18 +11,27 @@ POST http://localhost:7007/api/auth/login
 POST http://localhost:7007/api/auth/register
 
 {
-"username": "youssef",
+"username": "thomas",
 "password": "1234"
 }
 
 ###
 GET http://localhost:7007/api/protected/user_login_with_token
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJZb3Vzc2VmIEJhZHJhbiIsInN1YiI6InlvdXNzZWYiLCJleHAiOjE3MTA4ODIwOTAsInJvbGVzIjoiYWRtaW4iLCJ1c2VybmFtZSI6InlvdXNzZWYifQ.h529ljuiVQXxia6lEOXcadZbCx6yTZQ3rDyJVftkhqk
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJZb3Vzc2VmIEJhZHJhbiIsInN1YiI6InRob21hcyIsImV4cCI6MTcxMDg4NTIzNywicm9sZXMiOiJ1c2VyIiwidXNlcm5hbWUiOiJ0aG9tYXMifQ.Va78fwjI8_UbVJ27z27ndKeNpTKLfTsg5S7IhkUjvmE
 
 ###
 
 GET http://localhost:7007/api/protected/admin_login_with_token
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJZb3Vzc2VmIEJhZHJhbiIsInN1YiI6InlvdXNzZWYiLCJleHAiOjE3MTA4ODIwOTAsInJvbGVzIjoiYWRtaW4iLCJ1c2VybmFtZSI6InlvdXNzZWYifQ.h529ljuiVQXxia6lEOXcadZbCx6yTZQ3rDyJVftkhqk
+
+###
+
+POST http://localhost:7007/api/rooms/create/1
+
+{
+"number": 100,
+"price": 50.6
+}
 
 ###
 

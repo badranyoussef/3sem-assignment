@@ -38,7 +38,6 @@ class EndpointTest {
         app = ApplicationConfig.getInstance();
         app.initiateServer()
                 .startServer(port)
-//                .setExceptionHandlers()
                 .setRoute(Route.getHotelRoutes())
                 .setRoute(Route.getRoomRoutes())
                 .setRoute(Route.getUserRoutes());
