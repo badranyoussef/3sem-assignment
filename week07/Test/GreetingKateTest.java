@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GreetingKateTest {
@@ -83,5 +86,38 @@ public class GreetingKateTest {
 
     }
 
+
+//    Requirement 5
+
+    String[] arrOfNames = {"Amy", "Brian", "Charlotte"};
+
+    public String greetEveryone(Object name) {
+
+        String result = "";
+
+        if (name instanceof String[]) {
+            String[] names = (String[]) name;
+            result = String.join(", ", names);
+        }
+        return result+".";
+    }
+
+    public static String greetEveryone2(String[] names) {
+        if (names.length <= 2) {
+            return String.join(" and ", names);
+        } else {
+            String commaSeparated = IntStream.range(0, names.length - 1)
+                    .mapToObj(i -> names[i])
+                    .collect(Collectors.joining(", "));
+            return "Hello, "+commaSeparated + ", and " + names[names.length - 1] + ".";
+        }
+    }
+
+    @Test
+    @DisplayName("When giving a name, return 'Hello, name.'")
+    void test5() {
+        assertEquals("Hello, Amy, Brian, and Charlotte.", greetEveryone2(arrOfNames));
+
+    }
 
 }
