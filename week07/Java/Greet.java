@@ -70,44 +70,44 @@ public class Greet {
 
     // 6
 
-    public static String mixedNames(String[] names) {
-        List<String> normalNames = Arrays.stream(names)
-                .filter(name -> !name.equals(name.toUpperCase()))
-                .collect(Collectors.toList());
-        List<String> shoutedNames = Arrays.stream(names)
-                .filter(name -> name.equals(name.toUpperCase()))
-                .collect(Collectors.toList());
-
-        String normalGreeting = normalNames.isEmpty() ? "" :
-                "Hello, " + String.join(" and ", normalNames) + ".";
-        String shoutedGreeting = shoutedNames.isEmpty() ? "" :
-                "AND HELLO " + String.join(" AND HELLO ", shoutedNames) + "!";
-
-        return normalGreeting + (normalNames.isEmpty() || shoutedNames.isEmpty() ? "" : " ") + shoutedGreeting;
-    }
+//    public static String mixedNames(String[] names) {
+//        List<String> normalNames = Arrays.stream(names)
+//                .filter(name -> !name.equals(name.toUpperCase()))
+//                .collect(Collectors.toList());
+//        List<String> shoutedNames = Arrays.stream(names)
+//                .filter(name -> name.equals(name.toUpperCase()))
+//                .collect(Collectors.toList());
+//
+//        String normalGreeting = normalNames.isEmpty() ? "" :
+//                "Hello, " + String.join(" and ", normalNames) + ".";
+//        String shoutedGreeting = shoutedNames.isEmpty() ? "" :
+//                "AND HELLO " + String.join(" AND HELLO ", shoutedNames) + "!";
+//
+//        return normalGreeting + (normalNames.isEmpty() || shoutedNames.isEmpty() ? "" : " ") + shoutedGreeting;
+//    }
 
     // 7
 
-    public static String namesWithComma(String[] names) {
-        // Flatten names with commas into a list of individual names
-        String[] allNames = Arrays.stream(names)
-                .flatMap(name -> Arrays.stream(name.split("\\s*,\\s*"))) //  \\s*,\\s* både mellemrum før og efter komma fjernes, splittes ved komma
-                .toArray(String[]::new);
-
-        if (allNames.length == 1) {
-            return "Hello, " + allNames[0] + ".";
-        }
-
-        String lastTwoNames = String.join(" and ", allNames[allNames.length - 2], allNames[allNames.length - 1]);
-        if (allNames.length == 2) {
-            return "Hello, " + lastTwoNames + ".";
-        }
-
-        String commaSeparatedNames = Arrays.stream(allNames, 0, allNames.length - 2)
-                .collect(Collectors.joining(", "));
-
-        return "Hello, " + commaSeparatedNames + ", " + lastTwoNames + ".";
-    }
+//    public static String namesWithComma(String[] names) {
+//        // Flatten names with commas into a list of individual names
+//        String[] allNames = Arrays.stream(names)
+//                .flatMap(name -> Arrays.stream(name.split("\\s*,\\s*"))) //  \\s*,\\s* både mellemrum før og efter komma fjernes, splittes ved komma
+//                .toArray(String[]::new);
+//
+//        if (allNames.length == 1) {
+//            return "Hello, " + allNames[0] + ".";
+//        }
+//
+//        String lastTwoNames = String.join(" and ", allNames[allNames.length - 2], allNames[allNames.length - 1]);
+//        if (allNames.length == 2) {
+//            return "Hello, " + lastTwoNames + ".";
+//        }
+//
+//        String commaSeparatedNames = Arrays.stream(allNames, 0, allNames.length - 2)
+//                .collect(Collectors.joining(", "));
+//
+//        return "Hello, " + commaSeparatedNames + ", " + lastTwoNames + ".";
+//    }
 
     private static String helloFriend = "Hello, my friend.";
 
@@ -122,6 +122,41 @@ public class Greet {
             }
         } else if (o instanceof String[]) {
             String[] names = (String[]) o;
+            for (String s : names) {
+                if (s.equals(s.toUpperCase())) {
+                    List<String> normalNames = Arrays.stream(names)
+                            .filter(name -> !name.equals(name.toUpperCase()))
+                            .collect(Collectors.toList());
+                    List<String> shoutedNames = Arrays.stream(names)
+                            .filter(name -> name.equals(name.toUpperCase()))
+                            .collect(Collectors.toList());
+
+                    String normalGreeting = normalNames.isEmpty() ? "" :
+                            "Hello, " + String.join(" and ", normalNames) + ".";
+                    String shoutedGreeting = shoutedNames.isEmpty() ? "" :
+                            "AND HELLO " + String.join(" AND HELLO ", shoutedNames) + "!";
+                    return normalGreeting + (normalNames.isEmpty() || shoutedNames.isEmpty() ? "" : " ") + shoutedGreeting;
+                } else if (s.contains(",")) {
+                    // Flatten names with commas into a list of individual names
+                    String[] allNames = Arrays.stream(names)
+                            .flatMap(name -> Arrays.stream(name.split("\\s*,\\s*"))) //  \\s*,\\s* både mellemrum før og efter komma fjernes, splittes ved komma
+                            .toArray(String[]::new);
+
+                    if (allNames.length == 1) {
+                        return "Hello, " + allNames[0] + ".";
+                    }
+
+                    String lastTwoNames = String.join(" and ", allNames[allNames.length - 2], allNames[allNames.length - 1]);
+                    if (allNames.length == 2) {
+                        return "Hello, " + lastTwoNames + ".";
+                    }
+
+                    String commaSeparatedNames = Arrays.stream(allNames, 0, allNames.length - 2)
+                            .collect(Collectors.joining(", "));
+
+                    return "Hello, " + commaSeparatedNames + ", " + lastTwoNames + ".";
+                }
+            }
             if (names.length == 2) {
                 return "Hello, " + names[0] + " and " + names[1] + ".";
             } else if (names.length <= 2) {
