@@ -3,5 +3,4 @@
 ## Overview
 
 - Youssef Badran
-- which assignment are included
-- which one are completed and which one are not
+- all tests and methods are done
