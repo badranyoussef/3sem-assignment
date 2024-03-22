@@ -14,6 +14,8 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 
 class RouteTest {
 
+    //Alle test er struktureret
+
     private static EntityManagerFactory emf;
     private static ApplicationConfig app;
     private static Integer port = 7007;
@@ -70,16 +72,22 @@ class RouteTest {
                         .post("/auth/register")
                         .then()
                         .statusCode(201)
+                        .body("username", equalTo("UserTest"))
                         .extract().asString();
 
         String token = JsonPath.from(response).getString("token");
         String username = JsonPath.from(response).getString("username");
-        System.out.println("Response: " + response + "\nToken: " + token + "\nUsername: " + username);
+
+        //lav en assertEquals ift. username
+
+//        System.out.println("Response: " + response + "\nToken: " + token + "\nUsername: " + username);
     }
 
     @Test
     @DisplayName("Login and retrieve token")
     void test2() {
+
+        //Først registrerer vi en bruger og derefter tester vi login metoden.
 
         String setRegisterBody = "{\"username\": \"UserTest\", \"password\": \"1234\"}";
         RestAssured

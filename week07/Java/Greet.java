@@ -41,7 +41,7 @@ public class Greet {
                 return "Hello, " + names[0] + " and " + names[1] + ".";
             }
         }
-        return "Hello, my friend.";
+        return "Hello, my friends";
     }
 
     //    Requirement 5

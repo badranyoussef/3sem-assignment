@@ -12,10 +12,10 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
         <hibernate-version>6.2.4.Final</hibernate-version>
         <restassured.version>5.3.2</restassured.version>
         <testcontainers.version>1.19.5</testcontainers.version>
+
 <!--        <junit.version>5.9.1</junit.version>-->
         <hamcrest.version>2.0.0.0</hamcrest.version>
         <restassured.version>5.3.0</restassured.version>
