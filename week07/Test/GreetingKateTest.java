@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class GreetingKateTest {
 
     private Greet greet = new Greet();
-    private String name_ = null;
     private String[] arrNames = {"Jill", "Jane"};
     String[] arrOfNames = {"Amy", "Brian", "Charlotte"};
     String[] mixedNames = {"Amy", "BRIAN", "Charlotte"};
@@ -18,7 +17,16 @@ public class GreetingKateTest {
     @Test
     @DisplayName("When giving a name, return 'Hello, name.'")
     void test1() {
-        assertEquals("Hello, Bob.", greet.greet("Bob"));
+
+        //Given
+        String setName = "Bob";
+        String expected = "Hello, Bob.";
+
+        //when
+        String result = greet.allMethods(setName);
+
+        //then
+        assertEquals(result, expected);
 
     }
 
@@ -28,42 +36,49 @@ public class GreetingKateTest {
     @Test
     @DisplayName("When name is null, return 'Hello, my friend.'")
     void test2() {
-        assertEquals("Hello, my friend.", greet.standIn(name_));
+        // Given
+        String setName = null;
+        String expectedString = "Hello, my friend.";
 
+        // When
+        String result = greet.allMethods(setName);
+
+        //Then
+        assertEquals(expectedString, result);
     }
 
     @Test
     @DisplayName("When input is in uppercase, return uppercase greeting")
     void test3() {
-        assertEquals("HELLO, JERRY!", greet.shouting("JERRY"));
-        assertEquals("Hello, Jerry.", greet.shouting("Jerry"));
+        assertEquals("HELLO, JERRY!", greet.allMethods("JERRY"));
+        assertEquals("Hello, Jerry.", greet.allMethods("Jerry"));
 
     }
 
     @Test
     @DisplayName("When name is an array of two names, then both names should be printed.")
     void test4() {
-        assertEquals("Hello, Jill and Jane.", greet.greetAll(arrNames));
-        assertEquals("Hello, Jill and Jane.", greet.greetAllWithObject(arrNames));
+        assertEquals("Hello, Jill and Jane.", greet.allMethods(arrNames));
+        assertEquals("Hello, Jill and Jane.", greet.allMethods(arrNames));
 
     }
 
     @Test
     @DisplayName("When name represents more than two names, separate them with commas and close with an Oxford comma and 'and'")
     void test5() {
-        assertEquals("Hello, Amy, Brian, and Charlotte.", greet.greetEveryone2(arrOfNames));
+        assertEquals("Hello, Amy, Brian, and Charlotte.", greet.allMethods(arrOfNames));
     }
 
     @Test
     @DisplayName("when name is ['Amy', 'BRIAN', 'Charlotte'], then the method should return the string 'Hello, Amy and Charlotte. AND HELLO BRIAN!'")
     void test6() {
-        assertEquals("Hello, Amy and Charlotte. AND HELLO BRIAN!", greet.mixedNames(mixedNames));
+        assertEquals("Hello, Amy and Charlotte. AND HELLO BRIAN!", greet.allMethods(mixedNames));
     }
 
     @Test
     @DisplayName("when name is ['Bob', 'Charlie, Dianne'], then the method should return the string 'Hello, Bob, Charlie, and Dianne.'")
     void test7() {
-        assertEquals("Hello, Bob, Charlie and Dianne.", greet.namesWithComma(mixedNamesWithComma));
+        assertEquals("Hello, Bob, Charlie and Dianne.", greet.allMethods(mixedNamesWithComma));
     }
 
 }
