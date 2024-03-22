@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -109,7 +110,7 @@ public class Greet {
 //        return "Hello, " + commaSeparatedNames + ", " + lastTwoNames + ".";
 //    }
 
-    private static String helloFriend = "Hello, my friend.";
+    private final static String helloFriend = "Hello, my friend.";
 
     public static String allMethods(Object o) {
         if (o == null) {
@@ -123,20 +124,32 @@ public class Greet {
         } else if (o instanceof String[]) {
             String[] names = (String[]) o;
             for (String s : names) {
-                if (s.equals(s.toUpperCase())) {
-                    List<String> normalNames = Arrays.stream(names)
-                            .filter(name -> !name.equals(name.toUpperCase()))
-                            .collect(Collectors.toList());
-                    List<String> shoutedNames = Arrays.stream(names)
-                            .filter(name -> name.equals(name.toUpperCase()))
-                            .collect(Collectors.toList());
+                if(s.contains("\"")){
+                    List<String> processedNames = new ArrayList<>();
+                    StringBuilder buffer = new StringBuilder();
+                    boolean withinQuotes = false;
 
-                    String normalGreeting = normalNames.isEmpty() ? "" :
-                            "Hello, " + String.join(" and ", normalNames) + ".";
-                    String shoutedGreeting = shoutedNames.isEmpty() ? "" :
-                            "AND HELLO " + String.join(" AND HELLO ", shoutedNames) + "!";
-                    return normalGreeting + (normalNames.isEmpty() || shoutedNames.isEmpty() ? "" : " ") + shoutedGreeting;
-                } else if (s.contains(",")) {
+                    // Process each name, respecting quoted sections
+                    for (String name : names) {
+                        if (name.startsWith("\"")) {
+                            withinQuotes = true;
+                            buffer.append(name.substring(1)); // Remove starting quote
+                        } else if (name.endsWith("\"")) {
+                            withinQuotes = false;
+                            buffer.append(" ").append(name, 0, name.length() - 1); // Remove ending quote
+                            processedNames.add(buffer.toString());
+                            buffer.setLength(0); // Clear the buffer
+                        } else if (withinQuotes) {
+                            buffer.append(" ").append(name);
+                        } else {
+                            processedNames.add(name);
+                        }
+                    }
+
+                    // Now handle the formatted list with commas and "and"
+                    return "Hello, " + String.join(" and ", processedNames) + ".";
+                }
+                else if (s.contains(",")) {
                     // Flatten names with commas into a list of individual names
                     String[] allNames = Arrays.stream(names)
                             .flatMap(name -> Arrays.stream(name.split("\\s*,\\s*"))) //  \\s*,\\s* både mellemrum før og efter komma fjernes, splittes ved komma
@@ -155,6 +168,19 @@ public class Greet {
                             .collect(Collectors.joining(", "));
 
                     return "Hello, " + commaSeparatedNames + ", " + lastTwoNames + ".";
+                } else if (s.equals(s.toUpperCase())) {
+                    List<String> normalNames = Arrays.stream(names)
+                            .filter(name -> !name.equals(name.toUpperCase()))
+                            .collect(Collectors.toList());
+                    List<String> shoutedNames = Arrays.stream(names)
+                            .filter(name -> name.equals(name.toUpperCase()))
+                            .collect(Collectors.toList());
+
+                    String normalGreeting = normalNames.isEmpty() ? "" :
+                            "Hello, " + String.join(" and ", normalNames) + ".";
+                    String shoutedGreeting = shoutedNames.isEmpty() ? "" :
+                            "AND HELLO " + String.join(" AND HELLO ", shoutedNames) + "!";
+                    return normalGreeting + (normalNames.isEmpty() || shoutedNames.isEmpty() ? "" : " ") + shoutedGreeting;
                 }
             }
             if (names.length == 2) {
@@ -170,4 +196,5 @@ public class Greet {
         }
         return helloFriend;
     }
+
 }
