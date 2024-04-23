@@ -1,13 +1,16 @@
 // Tilføj en enkelt klikhåndterer til knapperne
-document.getElementById('buttons').addEventListener('click', function(event) {
+document.getElementById('buttons').addEventListener('click', getValueOfButton);
+
+function getValueOfButton(button) {
   // Få teksten i den klikkede knap via event target
-  let buttonText = event.target.innerText;
+  let buttonText = button.target.textContent;
 
   // Hvis knappen ikke er "=" (calculate), tilføj værdien til displayet
   if (buttonText !== '=') {
       document.getElementById('display').textContent += buttonText;
   }
-});
+}
+
 
 // Tilføj en ny klikhåndterer til "=" (calculate) knappen
 document.getElementById('calculate').addEventListener('click', function(event) {
@@ -26,3 +29,5 @@ document.getElementById('calculate').addEventListener('click', function(event) {
       document.getElementById('display').textContent = 'Error';
   }
 });
+
+

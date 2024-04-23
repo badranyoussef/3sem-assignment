@@ -12,8 +12,6 @@ function changeColor() {
 
   // man kunne også gør det simplere således:
   //Array.from(divs).map(element => element.backgroundColor(colors[randomIndex])) //men så 
-
-
 }
 
 // Tilføj klikhåndterer til knappen
