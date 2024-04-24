@@ -29,5 +29,6 @@ div2.addEventListener("click", handleClickDiv2);
 
 // Hent outer div og tilføjer klikhåndtering
 let outerDiv = document.getElementById("outer")
-outerDiv.addEventListener("click", handleClickOuter)
 
+
+outerDiv.addEventListener("click", handleClickOuter)

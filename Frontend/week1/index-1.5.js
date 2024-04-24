@@ -24,18 +24,17 @@ function handleSubmit(event) {
     // Add the new name to the array
     if(newName.trim() !== "" && isNaN(newName)){
     names.push(newName);
+    document.getElementById("errorMessage").innerHTML = ""
 
     // Generate the updated name list
     generateNameList();
     }else{
       document.getElementById("errorMessage").innerHTML = "You did not type a valid name. try again"
     }
-
-
-
     // Clear the input field
     document.getElementById("nameInput").value = "";
 }
+
 
 // Function to remove the first name from the list
 function removeFirst() {
