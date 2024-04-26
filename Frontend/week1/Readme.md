@@ -3,7 +3,7 @@
 ## Overview
 
 - Youssef Badran
-- all assignment are included. EuroMap is not finished as i could not solve it.
+- all assignment are included.
 
 ## Friday presentation
 - add the friday presentation into the weekly folder
