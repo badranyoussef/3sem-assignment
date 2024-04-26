@@ -6,7 +6,12 @@ function App() {
   const [countryData, setCountryData] = useState(null); //sætter værdien til null ved opstart at program.
 
   function clickHandler(event) {
-    setSelectedCountry(event.target)
+
+    if (selectedCountry != null) {
+      selectedCountry.style.fill = "#c0c0c0";
+    }
+    setSelectedCountry(event.target);
+    event.target.style.fill = "red";
   }
 
   useEffect(() => {
@@ -14,14 +19,14 @@ function App() {
       fetch('https://restcountries.com/v3.1/alpha/' + selectedCountry.id) //således får vi tilføjet lande ID til api'et
         .then(response => response.json())
         .then((data) => {
-          const countryObject = {
+          const countryObject = {     // vi bruger destructing således at vi kan hive de ønskede data.
             name: data[0].name.common,
             capital: data[0].capital,
             population: data[0].population
           };
           setCountryData(countryObject);
         })
-        .catch(error => console.error('Error fetching joke:', error));
+        .catch(error => console.error('Error country Data: ', error));
     };
   }, [selectedCountry]); // Jeg sætter selectedCountry ind i Array (dependecie) for at sikre at useEffect kaldes hver gang selectedCountry ændres
   // dvs hvis Arrayet (som er en dependency) er tom eller fjernes, vil useEffect kun kaldes én gang
