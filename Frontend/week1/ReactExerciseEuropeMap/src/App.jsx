@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import SvgComponent from './SvgComponent';
 
 function App() {
-  const [selectedCountry, setSelectedCountry] = useState(null); //sætter værdien til null ved opstart at program.
-  const [countryData, setCountryData] = useState(null); //sætter værdien til null ved opstart at program.
+  const [selectedCountry, setSelectedCountry] = useState(null); //sætter værdien til null ved opstart at program. Vi gemmer det ID'et i denne variabel
+  const [countryData, setCountryData] = useState(null); //sætter værdien til null ved opstart at program. Her gemmer vi al information omkring landet
 
   function clickHandler(event) {
 
@@ -13,6 +13,8 @@ function App() {
     setSelectedCountry(event.target);
     event.target.style.fill = "red";
   }
+
+
 
   useEffect(() => {
     if (selectedCountry != null) { // da useEffect kaldes første gang når programmet kører er selectedCountry null... Derfor må der ikke fetches før brugeren klikker på et land.
@@ -29,7 +31,7 @@ function App() {
         .catch(error => console.error('Error country Data: ', error));
     };
   }, [selectedCountry]); // Jeg sætter selectedCountry ind i Array (dependecie) for at sikre at useEffect kaldes hver gang selectedCountry ændres
-  // dvs hvis Arrayet (som er en dependency) er tom eller fjernes, vil useEffect kun kaldes én gang
+  // dvs hvis Arrayet (som er en dependency) er tom eller fjernes, vil useEffect kun kaldes én gang og det er når et land vælges første gang.
 
   return (
     <div>
@@ -43,7 +45,7 @@ function App() {
           <p> Population: {countryData.population} </p>
         </div>
       )}
-      <div onClick={clickHandler}> {/* sætter en onClick på den ydre div for at fange den enkelte div der klikkes på inde i SVG filen. */}
+      <div onClick={clickHandler}> {/* sætter en ClickHandler på den ydre div for at fange den enkelte div der klikkes på inde i SVG filen. - event bubbling */}
         <SvgComponent />
       </div>
     </div>
