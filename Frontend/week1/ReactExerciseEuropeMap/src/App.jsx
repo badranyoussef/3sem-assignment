@@ -7,9 +7,10 @@ function App() {
 
   function clickHandler(event) {
 
-    if (selectedCountry != null) {
-      selectedCountry.style.fill = "#c0c0c0";
+    if (selectedCountry != null) { // Vi laver dette tjek for at sikre programmet kan køre. Ved opstart er selectedCountry null hvorfor der vi lopstå en null pointer.
+      selectedCountry.style.fill = "#c0c0c0"; //dernæst skal valgte land markeres rødt. (linje 15). Når et andet land markeres køres denne linje så landet markeres gråt igen og derefter markeres det nye land med rødt
     }
+    
     setSelectedCountry(event.target);
     event.target.style.fill = "red";
   }
