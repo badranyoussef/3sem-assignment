@@ -4,3 +4,28 @@
   padding: 2rem;
   text-align: center;
 }
+
+ /* Apply basic table styles / */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+ /* Apply styles to table headers */
+th {
+  background-color: #db2f2f;
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+ /* Apply styles to table data cells  */
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+ /* Apply alternating row colors  */
+tbody tr:nth-child(even) {
+  background-color: #db2f2f;
+}

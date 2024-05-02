@@ -1,0 +1,102 @@
+{
+  "books": [
+    {
+      "id": "101",
+      "title": "nam aut qui labore similique",
+      "author": "youssef",
+      "rating": 2.3,
+      "year_published": "2005"
+    },
+    {
+      "id": "102",
+      "title": "aut magnam quidem et",
+      "author": "Eleazar Wintheiser",
+      "rating": 3.2,
+      "year_published": 1798
+    },
+    {
+      "id": "103",
+      "title": "maiores odio esse",
+      "author": "Anibal Runolfsson",
+      "rating": 4.55,
+      "year_published": 1884
+    },
+    {
+      "id": "104",
+      "title": "nam omnis",
+      "author": "Coleman Williamson",
+      "rating": 3.2,
+      "year_published": 1954
+    },
+    {
+      "id": "105",
+      "title": "expedita voluptates consequatur optio",
+      "author": "Jamaal Feest",
+      "rating": 4.9,
+      "year_published": 1746
+    },
+    {
+      "id": "106",
+      "title": "delectus voluptatum similique dolorem in",
+      "author": "Triston Flatley",
+      "rating": 4.7,
+      "year_published": 1964
+    },
+    {
+      "id": "107",
+      "title": "eius tempore",
+      "author": "Tavares Thiel",
+      "rating": 1.75,
+      "year_published": 1710
+    },
+    {
+      "id": "108",
+      "title": "ea enim delectus dicta",
+      "author": "Marvin Heidenreich",
+      "rating": 4.25,
+      "year_published": 1972
+    },
+    {
+      "id": "109",
+      "title": "exercitationem id quia vel qui",
+      "author": "Kelli Beahan",
+      "rating": 3.85,
+      "year_published": 1816
+    },
+    {
+      "id": "110",
+      "title": "impedit",
+      "author": "Hellen Anderson",
+      "rating": 4.75,
+      "year_published": 1796
+    },
+    {
+      "id": "111",
+      "title": "sed iusto quia ea",
+      "author": "Gaetano Stamm",
+      "rating": 3.4,
+      "year_published": 1905
+    },
+    {
+      "id": "112",
+      "title": "unde",
+      "author": "Emely Marquardt",
+      "rating": 1.9,
+      "year_published": 1788
+    },
+    {
+      "id": "113",
+      "title": "consequuntur nesciunt corrupti sit suscipit",
+      "author": "Karlee Littel",
+      "rating": 4.7,
+      "year_published": 1968
+    },
+    {
+      "id": "114",
+      "title": "rem tempora",
+      "author": "Garrison Schiller",
+      "rating": 0.2,
+      "year_published": 1753
+    }
+  ]
+}
