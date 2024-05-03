@@ -1,5 +1,13 @@
 {
-  "api": [
+  "api":
+  [
+    {
+      "id": "1",
+      "age": "22",
+      "name": "Steve",
+      "email": "steve@test.com",
+      "gender": "male"
+    },
     {
       "id": "2",
       "age": "19",
@@ -27,20 +35,6 @@
       "name": "Michael",
       "email": "michael@test.com",
       "gender": "male"
-    },
-    {
-      "id": "",
-      "age": "",
-      "name": "",
-      "email": "",
-      "gender": ""
-    },
-    {
-      "id": "",
-      "age": "",
-      "name": "",
-      "email": "",
-      "gender": ""
     }
   ]
 }
