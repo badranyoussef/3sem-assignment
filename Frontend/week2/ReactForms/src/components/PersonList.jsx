@@ -1,9 +1,7 @@
-import React from 'react'
-
-export const PersonList = ({ persons, deletePersonById, editPerson }) => {
+function PersonList({ persons, deletePersonById, editPerson }) {
   return (
     <div>
-      <h1>List of persons</h1>
+      <h3>List of persons</h3>
       {/* uses bootstrap css. has been inserted in index.html (header) */}
       <table className="table table-striped">
         <thead>
@@ -26,12 +24,16 @@ export const PersonList = ({ persons, deletePersonById, editPerson }) => {
               <td>{person.gender}</td>
               <td>
                 <button onClick={() => editPerson(person)}>Edit</button>
-                <button onClick={() => deletePersonById(person.id)}>Delete</button>
+                <button onClick={() => deletePersonById(person.id)}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-  )
+  );
 }
+
+export default PersonList;
